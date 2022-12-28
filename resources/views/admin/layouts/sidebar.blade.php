@@ -14,7 +14,7 @@
                 <img src="/admin-lte/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Admin</a>
+                <span class="text-light">Admin</span>
             </div>
         </div>
         <!-- Sidebar Menu -->
@@ -24,7 +24,7 @@
                 <!-- Add icons to the links using the .nav-icon class
        with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="/admin/dashboard" class="nav-link">
+                    <a href="/admin/dashboard" class="nav-link @yield('dashboard-active')">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -33,7 +33,7 @@
                 </li>
                 <li class="nav-header">MASTER</li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="/admin/data-karyawan" class="nav-link @yield('data-karyawan-active')">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
                             Data Karyawan
@@ -41,7 +41,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="/admin/data-training" class="nav-link @yield('data-training-active')">
                         <i class="nav-icon fas fa-medal"></i>
                         <p>
                             Data Training
@@ -49,7 +49,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="/admin/data-sertifikasi" class="nav-link @yield('data-sertifikasi-active')">
                         <i class="nav-icon fas fa-award"></i>
                         <p>
                             Data Sertifikasi
@@ -58,7 +58,7 @@
                 </li>
                 <li class="nav-header">PENDAFTARAN</li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="/admin/pendaftaran-training" class="nav-link @yield('pendaftaran-training-active')">
                         <i class="nav-icon fas fa-file-alt"></i>
                         <p>
                             Pendaftaran Training
@@ -66,7 +66,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="/admin/pendaftaran-sertifikasi" class="nav-link @yield('pendaftaran-sertifikasi-active')">
                         <i class="nav-icon fas fa-file-alt"></i>
                         <p>
                             Pendaftaran Sertifikasi
@@ -75,7 +75,7 @@
                 </li>
                 <li class="nav-header">PELAKSANAAN</li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="/admin/pelaksanaan-training" class="nav-link @yield('pelaksanaan-training-active')">
                         <i class="nav-icon fas fa-calendar-alt"></i>
                         <p>
                             Pelaksanaan Training
@@ -83,7 +83,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="/admin/ujian-sertifikasi" class="nav-link @yield('ujian-sertifikasi-active')">
                         <i class="nav-icon fas fa-calendar-alt"></i>
                         <p>
                             Ujian Sertifikasi

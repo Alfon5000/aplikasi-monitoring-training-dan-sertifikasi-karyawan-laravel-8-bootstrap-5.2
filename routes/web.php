@@ -18,7 +18,35 @@ Route::get('/', function () {
 });
 
 Route::get('/admin/dashboard', function () {
-    return view('admin.layouts.app');
+    return view('admin.dashboard.index');
+});
+
+Route::get('/admin/data-karyawan', function () {
+    return view('admin.data-karyawan.index');
+});
+
+Route::get('/admin/data-training', function () {
+    return view('admin.data-training.index');
+});
+
+Route::get('/admin/data-sertifikasi', function () {
+    return view('admin.data-sertifikasi.index');
+});
+
+Route::get('/admin/pendaftaran-training', function () {
+    return view('admin.pendaftaran-training.index');
+});
+
+Route::get('/admin/pendaftaran-sertifikasi', function () {
+    return view('admin.pendaftaran-sertifikasi.index');
+});
+
+Route::get('/admin/pelaksanaan-training', function () {
+    return view('admin.pelaksanaan-training.index');
+});
+
+Route::get('/admin/ujian-sertifikasi', function () {
+    return view('admin.ujian-sertifikasi.index');
 });
 
 Auth::routes();
