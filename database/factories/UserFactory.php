@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Faker\Factory as FakerFactory;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -17,26 +16,21 @@ class UserFactory extends Factory
     public function definition()
     {
         $faker = FakerFactory::create('id_ID');
-        $jenis_kelamin = ['Pria', 'Wanita'];
-        $agama = ['Islam', 'Kristen', 'Katolik', 'Hindu', 'Buddha', 'Konghucu'];
-        $pendidikan = ['SMA', 'SMK', 'D3', 'S1', 'S2', 'S3'];
-        $jabatan = ['Staff', 'Supervisor', 'Asisten Manajer', 'Manajer', 'Direktur'];
-        $divisi = ['Keuangan', 'Pemasaran', 'Penjualan', 'Personalia', 'Teknologi Informasi'];
 
         return [
             'role_id' => 2,
+            'jenis_kelamin_id' => random_int(1, 2),
+            'agama_id' => random_int(1, 6),
+            'pendidikan_id' => random_int(1, 6),
+            'jabatan_id' => random_int(1, 5),
+            'divisi_id' => random_int(1, 5),
             'nama' => $faker->name(),
             'nik' => random_int(0000000001, 9999999999),
             'tempat_lahir' => $faker->city(),
             'tanggal_lahir' => $faker->date(),
-            'jenis_kelamin' => Arr::Random($jenis_kelamin),
-            'agama' => Arr::Random($agama),
             'alamat' => $faker->address(),
             'kota' => $faker->city(),
             'provinsi' => $faker->state(),
-            'pendidikan' => Arr::Random($pendidikan),
-            'jabatan' => Arr::Random($jabatan),
-            'divisi' => Arr::Random($divisi),
             'telepon' => $faker->phoneNumber(),
             'email' => $faker->unique()->safeEmail(),
             'email_verified_at' => now(),

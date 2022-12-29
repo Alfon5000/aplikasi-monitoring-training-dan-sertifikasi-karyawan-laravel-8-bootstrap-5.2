@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -19,11 +20,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin/dashboard', function () {
-    return view('admin.dashboard.index');
-});
+Route::get('/admin/dashboard', DashboardController::class);
 
 Route::get('/admin/data-karyawan', [UserController::class, 'index']);
+Route::get('/admin/data-karyawan/create', [UserController::class, 'create']);
 
 Route::get('/admin/data-training', function () {
     return view('admin.data-training.index');

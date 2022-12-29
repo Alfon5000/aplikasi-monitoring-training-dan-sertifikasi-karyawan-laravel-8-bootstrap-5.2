@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Agama;
+use App\Models\Divisi;
+use App\Models\Jabatan;
+use App\Models\Pendidikan;
+use App\Models\JenisKelamin;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -14,7 +19,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(5);
+        $users = User::where('role_id', 2)->paginate(5);
         return view('admin.data-karyawan.index', ['users' => $users]);
     }
 
@@ -25,7 +30,19 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $jenis_kelamins = JenisKelamin::all();
+        $agamas = Agama::all();
+        $pendidikans = Pendidikan::all();
+        $jabatans = Jabatan::all();
+        $divisis = Divisi::all();
+
+        return view('admin.data-karyawan.create', [
+            'jenis_kelamins' => $jenis_kelamins,
+            'agamas' => $agamas,
+            'pendidikans' => $pendidikans,
+            'jabatans' => $jabatans,
+            'divisis' => $divisis
+        ]);
     }
 
     /**
