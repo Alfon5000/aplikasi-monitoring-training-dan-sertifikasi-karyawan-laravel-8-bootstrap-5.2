@@ -11,6 +11,7 @@
         <!-- User Dropdown Menu -->
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
+                <span class="font-weight-bold">Admin</span>
                 <i class="fas fa-user-cog ml-2"></i>
             </a>
             <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
