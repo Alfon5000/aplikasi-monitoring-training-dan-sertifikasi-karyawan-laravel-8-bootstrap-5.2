@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Role;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -24,6 +25,9 @@ class CreateUsersTable extends Migration
             $table->string('alamat');
             $table->string('kota');
             $table->string('provinsi');
+            $table->enum('pendidikan', ['SMA', 'SMK', 'D3', 'S1', 'S2', 'S3']);
+            $table->enum('jabatan', ['Staff', 'Supervisor', 'Asisten Manajer', 'Manajer', 'Direktur']);
+            $table->enum('divisi', ['Keuangan', 'Pemasaran', 'Penjualan', 'Personalia', 'Teknologi Informasi']);
             $table->string('telepon');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

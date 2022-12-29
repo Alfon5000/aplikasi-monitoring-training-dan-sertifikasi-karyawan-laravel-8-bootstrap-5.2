@@ -19,8 +19,12 @@ class UserFactory extends Factory
         $faker = FakerFactory::create('id_ID');
         $jenis_kelamin = ['Pria', 'Wanita'];
         $agama = ['Islam', 'Kristen', 'Katolik', 'Hindu', 'Buddha', 'Konghucu'];
+        $pendidikan = ['SMA', 'SMK', 'D3', 'S1', 'S2', 'S3'];
+        $jabatan = ['Staff', 'Supervisor', 'Asisten Manajer', 'Manajer', 'Direktur'];
+        $divisi = ['Keuangan', 'Pemasaran', 'Penjualan', 'Personalia', 'Teknologi Informasi'];
 
         return [
+            'role_id' => 2,
             'nama' => $faker->name(),
             'nik' => random_int(0000000001, 9999999999),
             'tempat_lahir' => $faker->city(),
@@ -30,6 +34,9 @@ class UserFactory extends Factory
             'alamat' => $faker->address(),
             'kota' => $faker->city(),
             'provinsi' => $faker->state(),
+            'pendidikan' => Arr::Random($pendidikan),
+            'jabatan' => Arr::Random($jabatan),
+            'divisi' => Arr::Random($divisi),
             'telepon' => $faker->phoneNumber(),
             'email' => $faker->unique()->safeEmail(),
             'email_verified_at' => now(),

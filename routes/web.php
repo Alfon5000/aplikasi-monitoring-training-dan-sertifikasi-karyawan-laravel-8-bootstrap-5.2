@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,9 +23,7 @@ Route::get('/admin/dashboard', function () {
     return view('admin.dashboard.index');
 });
 
-Route::get('/admin/data-karyawan', function () {
-    return view('admin.data-karyawan.index');
-});
+Route::get('/admin/data-karyawan', [UserController::class, 'index']);
 
 Route::get('/admin/data-training', function () {
     return view('admin.data-training.index');
