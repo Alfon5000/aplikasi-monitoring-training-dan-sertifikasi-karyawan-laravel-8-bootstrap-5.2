@@ -18,13 +18,13 @@ class RoleSeeder extends Seeder
         $roles = [
             [
                 'nama' => 'Admin',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now()
+                'created_at' => now(),
+                'updated_at' => now()
             ],
             [
                 'nama' => 'Karyawan',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now()
+                'created_at' => now(),
+                'updated_at' => now()
             ]
         ];
 
