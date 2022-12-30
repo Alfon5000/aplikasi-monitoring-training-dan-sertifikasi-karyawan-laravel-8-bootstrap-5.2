@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
@@ -33,12 +34,12 @@ class UserSeeder extends Seeder
                 'telepon' => '+6281236665363',
                 'email' => 'alfonso@gmail.com',
                 'email_verified_at' => now(),
-                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+                'password' => Hash::make('password'),
                 'remember_token' => Str::random(10),
                 'created_at' => now(),
                 'updated_at' => now()
             ]
         );
-        User::factory(30)->create();
+        User::factory(10)->create();
     }
 }

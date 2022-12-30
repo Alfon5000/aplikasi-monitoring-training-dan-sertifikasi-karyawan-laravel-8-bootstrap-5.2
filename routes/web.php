@@ -20,33 +20,34 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin/dashboard', DashboardController::class);
+Route::prefix('admin')->group(function () {
+    Route::get('/dashboard', DashboardController::class);
 
-Route::get('/admin/data-karyawan', [UserController::class, 'index']);
-Route::get('/admin/data-karyawan/create', [UserController::class, 'create']);
+    Route::resource('/data-karyawan', UserController::class);
 
-Route::get('/admin/data-training', function () {
-    return view('admin.data-training.index');
-});
+    Route::get('/data-training', function () {
+        return view('admin.data-training.index');
+    });
 
-Route::get('/admin/data-sertifikasi', function () {
-    return view('admin.data-sertifikasi.index');
-});
+    Route::get('/data-sertifikasi', function () {
+        return view('admin.data-sertifikasi.index');
+    });
 
-Route::get('/admin/pendaftaran-training', function () {
-    return view('admin.pendaftaran-training.index');
-});
+    Route::get('/pendaftaran-training', function () {
+        return view('admin.pendaftaran-training.index');
+    });
 
-Route::get('/admin/pendaftaran-sertifikasi', function () {
-    return view('admin.pendaftaran-sertifikasi.index');
-});
+    Route::get('/pendaftaran-sertifikasi', function () {
+        return view('admin.pendaftaran-sertifikasi.index');
+    });
 
-Route::get('/admin/pelaksanaan-training', function () {
-    return view('admin.pelaksanaan-training.index');
-});
+    Route::get('/pelaksanaan-training', function () {
+        return view('admin.pelaksanaan-training.index');
+    });
 
-Route::get('/admin/ujian-sertifikasi', function () {
-    return view('admin.ujian-sertifikasi.index');
+    Route::get('/ujian-sertifikasi', function () {
+        return view('admin.ujian-sertifikasi.index');
+    });
 });
 
 Auth::routes();

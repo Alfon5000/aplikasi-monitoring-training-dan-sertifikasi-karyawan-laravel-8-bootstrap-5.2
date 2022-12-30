@@ -9,6 +9,14 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
+          @if (session()->has('sukses'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              {{ session('sukses') }}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          @endif
           <div class="card">
             <div class="card-header">
               <div class="card-tools float-left">
@@ -45,8 +53,8 @@
                       <td>{{ $loop->iteration }}</td>
                       <td>{{ $user->nama }}</td>
                       <td>{{ $user->nik }}</td>
-                      <td>{{ $user->jabatan }}</td>
-                      <td>{{ $user->divisi }}</td>
+                      <td>{{ $user->jabatan->nama }}</td>
+                      <td>{{ $user->divisi->nama }}</td>
                       <td>
                         <button type="submit" class="btn btn-info">Detail</button>
                         <button type="submit" class="btn btn-warning">Ubah</button>

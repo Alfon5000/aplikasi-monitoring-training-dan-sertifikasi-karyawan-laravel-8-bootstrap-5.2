@@ -15,9 +15,6 @@ class DashboardController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $total_karyawan = User::where('role_id', 2)->count();
-        // $total_training = Training::count();
-        // $total_sertifikasi = Sertifikasi::count();
-        return view('admin.dashboard.index', ['total_karyawan' => $total_karyawan]);
+        return view('admin.dashboard.index', ['total_karyawan' => User::where('role_id', 2)->count()]);
     }
 }
