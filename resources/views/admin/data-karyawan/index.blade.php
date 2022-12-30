@@ -9,9 +9,16 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
-          @if (session()->has('sukses'))
+          @if (session()->has('tambah'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
-              {{ session('sukses') }}
+              {{ session('tambah') }}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          @elseif(session()->has('perbarui'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              {{ session('perbarui') }}
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -57,7 +64,7 @@
                       <td>{{ $user->divisi->nama }}</td>
                       <td>
                         <a href="/admin/data-karyawan/{{ $user->id }}" class="btn btn-info">Detail</a>
-                        <a href="/admin/data-karyawan/edit/{{ $user->id }}" class="btn btn-warning">Ubah</a>
+                        <a href="/admin/data-karyawan/{{ $user->id }}/edit" class="btn btn-warning">Ubah</a>
                         <a href="/admin/data-karyawan/{{ $user->id }}" class="btn btn-danger">Hapus</a>
                       </td>
                     </tr>
