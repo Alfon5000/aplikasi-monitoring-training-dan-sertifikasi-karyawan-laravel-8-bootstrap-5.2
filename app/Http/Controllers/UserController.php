@@ -21,7 +21,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('admin.data-karyawan.index', ['users' => User::where('role_id', 2)->get()]);
+        $users = User::where('role_id', 2)->paginate(5);
+        // if (request('table_search')) {
+        //     $users->where('nama', 'like', '%' . request('table_search') . '%');
+        // }
+        return view('admin.data-karyawan.index', ['users' => $users]);
     }
 
     /**
@@ -68,7 +72,6 @@ class UserController extends Controller
         $user->email_verified_at = now();
         $user->remember_token = Str::random(10);
         $user->save();
-
         return redirect('/admin/data-karyawan')->with('tambah', 'Data Karyawan Berhasil Ditambahkan.');
     }
 
@@ -91,13 +94,14 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        $user = User::find($id);
         return view('admin.data-karyawan.edit', [
-            'user' => User::find($id),
-            'jenis_kelamins' => JenisKelamin::all(),
-            'agamas' => Agama::all(),
-            'pendidikans' => Pendidikan::all(),
-            'jabatans' => Jabatan::all(),
-            'divisis' => Divisi::all()
+            'user' => $user,
+            'jenis_kelamins' => JenisKelamin::where('id', '!=', $user->jenis_kelamin_id)->get(),
+            'agamas' => Agama::where('id', '!=', $user->agama_id)->get(),
+            'pendidikans' => Pendidikan::where('id', '!=', $user->pendidikan_id)->get(),
+            'jabatans' => Jabatan::where('id', '!=', $user->jabatan_id)->get(),
+            'divisis' => Divisi::where('id', '!=', $user->divisi_id)->get()
         ]);
     }
 

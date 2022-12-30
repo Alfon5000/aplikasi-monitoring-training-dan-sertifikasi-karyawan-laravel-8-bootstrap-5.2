@@ -38,19 +38,22 @@
                   <a href="/admin/data-karyawan/create" class="btn btn-primary">Tambah</a>
                 </div>
               </div>
-              <div class="card-tools float-right">
-                <div class="input-group input-group-sm" style="width: 300px;">
-                  <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-                  <div class="input-group-append">
-                    <button type="submit" class="btn btn-default">
-                      <i class="fas fa-search"></i>
-                    </button>
+              {{-- <div class="card-tools float-right">
+                <form action="/admin/data-karyawan">
+                  <div class="input-group input-group-sm" style="width: 300px;">
+                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search"
+                      value="{{ request('table_search') }}">
+                    <div class="input-group-append">
+                      <button type="submit" class="btn btn-default">
+                        <i class="fas fa-search"></i>
+                      </button>
+                    </div>
                   </div>
-                </div>
-              </div>
+                </form>
+              </div> --}}
             </div>
             <div class="card-body">
-              <table class="table table-bordered">
+              <table class="table table-bordered text-center">
                 <thead>
                   <tr>
                     <th>No.</th>
@@ -85,11 +88,7 @@
             </div>
             <div class="card-footer clearfix">
               <ul class="pagination pagination-sm m-0 justify-content-center">
-                <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                {{ $users->links() }}
               </ul>
             </div>
           </div>
