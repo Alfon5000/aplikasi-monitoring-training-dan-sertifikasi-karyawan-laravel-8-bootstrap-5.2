@@ -29,7 +29,7 @@ class UserFactory extends Factory
             'nik' => random_int(0000000001, 9999999999),
             'tempat_lahir' => $faker->city(),
             'tanggal_lahir' => $faker->date(),
-            'alamat' => $faker->address(),
+            'alamat' => $faker->streetAddress(),
             'kota' => $faker->city(),
             'provinsi' => $faker->state(),
             'telepon' => $faker->phoneNumber(),

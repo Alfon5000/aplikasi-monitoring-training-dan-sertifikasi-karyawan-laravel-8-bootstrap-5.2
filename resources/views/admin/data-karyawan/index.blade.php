@@ -56,9 +56,9 @@
                       <td>{{ $user->jabatan->nama }}</td>
                       <td>{{ $user->divisi->nama }}</td>
                       <td>
-                        <button type="submit" class="btn btn-info">Detail</button>
-                        <button type="submit" class="btn btn-warning">Ubah</button>
-                        <button type="submit" class="btn btn-danger">Hapus</button>
+                        <a href="/admin/data-karyawan/{{ $user->id }}" class="btn btn-info">Detail</a>
+                        <a href="/admin/data-karyawan/edit/{{ $user->id }}" class="btn btn-warning">Ubah</a>
+                        <a href="/admin/data-karyawan/{{ $user->id }}" class="btn btn-danger">Hapus</a>
                       </td>
                     </tr>
                   @endforeach
