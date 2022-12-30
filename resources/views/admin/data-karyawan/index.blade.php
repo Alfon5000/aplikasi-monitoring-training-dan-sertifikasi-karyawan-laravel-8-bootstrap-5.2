@@ -23,6 +23,13 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
+          @elseif(session()->has('hapus'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              {{ session('hapus') }}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
           @endif
           <div class="card">
             <div class="card-header">
@@ -65,7 +72,11 @@
                       <td>
                         <a href="/admin/data-karyawan/{{ $user->id }}" class="btn btn-info">Detail</a>
                         <a href="/admin/data-karyawan/{{ $user->id }}/edit" class="btn btn-warning">Ubah</a>
-                        <a href="/admin/data-karyawan/{{ $user->id }}" class="btn btn-danger">Hapus</a>
+                        <form action="/admin/data-karyawan/{{ $user->id }}" method="POST" class="d-inline">
+                          @csrf
+                          @method('DELETE')
+                          <button class="btn btn-danger">Hapus</button>
+                        </form>
                       </td>
                     </tr>
                   @endforeach
