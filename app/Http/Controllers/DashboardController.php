@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Training;
+use App\Models\Sertifikasi;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -15,6 +17,10 @@ class DashboardController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return view('admin.dashboard.index', ['total_karyawan' => User::where('role_id', 2)->count()]);
+        return view('admin.dashboard.index', [
+            'total_karyawan' => User::where('role_id', 2)->count(),
+            'total_training' => Training::all()->count(),
+            'total_sertifikasi' => Sertifikasi::all()->count()
+        ]);
     }
 }

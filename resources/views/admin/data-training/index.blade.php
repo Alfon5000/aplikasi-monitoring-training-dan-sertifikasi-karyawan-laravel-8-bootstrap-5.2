@@ -65,6 +65,7 @@
                       <th>Tanggal Mulai</th>
                       <th>Tanggal Selesai</th>
                       <th>Kuota</th>
+                      <th>Aksi</th>
                     </tr>
                   </thead>
                   <tbody>

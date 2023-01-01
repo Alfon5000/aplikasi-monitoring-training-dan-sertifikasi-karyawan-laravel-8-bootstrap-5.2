@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TrainingController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SertifikasiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,8 @@ Route::prefix('admin')->group(function () {
     Route::resource('/data-karyawan', UserController::class);
 
     Route::resource('/data-training', TrainingController::class);
+
+    Route::resource('/data-sertifikasi', SertifikasiController::class);
 });
 
 Auth::routes();

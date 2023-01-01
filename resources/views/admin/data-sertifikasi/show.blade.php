@@ -1,8 +1,8 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Detail Training')
+@section('title', 'Detail Sertifikasi')
 
-@section('data-training-active', 'active')
+@section('data-sertifikasi-active', 'active')
 
 @section('content')
   <section class="content">
@@ -12,47 +12,42 @@
           <div class="card card-primary">
             <div class="card-body">
               <div class="mb-5 text-center">
-                <img src="{{ asset('storage/' . $training->gambar) }}" alt="{{ $training->nama }}" class="img-thumbnail"
-                  style="height: 275px;">
+                <img src="{{ asset('storage/' . $sertifikasi->gambar) }}" alt="{{ $sertifikasi->nama }}"
+                  class="img-thumbnail" style="height: 275px;">
               </div>
               <strong>Nama</strong>
               <p class="text-muted">
-                {{ $training->nama }}
+                {{ $sertifikasi->nama }}
               </p>
               <hr>
-              <strong>Tanggal Mulai</strong>
+              <strong>Tanggal Ujian</strong>
               <p class="text-muted">
-                {{ $training->tanggal_mulai }}
-              </p>
-              <hr>
-              <strong>Tanggal Selesai</strong>
-              <p class="text-muted">
-                {{ $training->tanggal_selesai }}
+                {{ $sertifikasi->tanggal_ujian }}
               </p>
               <hr>
               <strong>Alamat</strong>
               <p class="text-muted">
-                {{ $training->alamat }}
+                {{ $sertifikasi->alamat }}
               </p>
               <hr>
               <strong>Kota</strong>
               <p class="text-muted">
-                {{ $training->kota }}
+                {{ $sertifikasi->kota }}
               </p>
               <hr>
               <strong>Provinsi</strong>
               <p class="text-muted">
-                {{ $training->provinsi }}
+                {{ $sertifikasi->provinsi }}
               </p>
               <hr>
               <strong>Kuota</strong>
               <p class="text-muted">
-                {{ $training->kuota }}
+                {{ $sertifikasi->kuota }}
               </p>
               <hr>
               <strong>Deskripsi</strong>
               <p class="text-muted">
-                {{ $training->deskripsi }}
+                {{ $sertifikasi->deskripsi }}
               </p>
             </div>
           </div>

@@ -22,7 +22,8 @@ class DatabaseSeeder extends Seeder
             JabatanSeeder::class,
             DivisiSeeder::class,
             // UserSeeder::class,
-            // TrainingSeeder::class
+            // TrainingSeeder::class,
+            // SertifikasiSeeder::class,
         ]);
     }
 }

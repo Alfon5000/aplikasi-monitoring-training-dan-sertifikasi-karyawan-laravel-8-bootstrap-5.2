@@ -88,6 +88,7 @@ class TrainingController extends Controller
         $training->alamat = $request->alamat;
         $training->kota = $request->kota;
         $training->provinsi = $request->provinsi;
+        $training->kuota = $request->kuota;
         $training->deskripsi = $request->deskripsi;
         $training->gambar = $request->file('gambar')->store('gambar-training');
         $training->save();
