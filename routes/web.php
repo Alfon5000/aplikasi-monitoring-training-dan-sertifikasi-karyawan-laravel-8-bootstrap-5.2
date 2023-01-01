@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\TrainingController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,29 +26,7 @@ Route::prefix('admin')->group(function () {
 
     Route::resource('/data-karyawan', UserController::class);
 
-    Route::get('/data-training', function () {
-        return view('admin.data-training.index');
-    });
-
-    Route::get('/data-sertifikasi', function () {
-        return view('admin.data-sertifikasi.index');
-    });
-
-    Route::get('/pendaftaran-training', function () {
-        return view('admin.pendaftaran-training.index');
-    });
-
-    Route::get('/pendaftaran-sertifikasi', function () {
-        return view('admin.pendaftaran-sertifikasi.index');
-    });
-
-    Route::get('/pelaksanaan-training', function () {
-        return view('admin.pelaksanaan-training.index');
-    });
-
-    Route::get('/ujian-sertifikasi', function () {
-        return view('admin.ujian-sertifikasi.index');
-    });
+    Route::resource('/data-training', TrainingController::class);
 });
 
 Auth::routes();

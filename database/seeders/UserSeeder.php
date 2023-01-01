@@ -16,6 +16,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        //insert data admin
         User::insert(
             [
                 'role_id' => 1,
