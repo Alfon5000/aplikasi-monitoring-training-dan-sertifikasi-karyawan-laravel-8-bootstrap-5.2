@@ -34,11 +34,9 @@ class UserSeeder extends Seeder
                 'provinsi' => 'Jawa Barat',
                 'telepon' => '+6281236665363',
                 'email' => 'alfonso@gmail.com',
-                'email_verified_at' => now(),
                 'password' => Hash::make('password'),
-                'remember_token' => Str::random(10),
                 'created_at' => now(),
-                'updated_at' => now()
+                'updated_at' => now(),
             ]
         );
         User::factory(20)->create();

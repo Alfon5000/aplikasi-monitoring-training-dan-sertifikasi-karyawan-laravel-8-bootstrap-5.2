@@ -11,6 +11,7 @@ use Illuminate\Support\Str;
 use App\Models\JenisKelamin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -21,11 +22,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::where('role_id', 2)->paginate(5);
+        $users = User::where('role_id', 2)->latest()->paginate(5);
+        $count = User::all()->count();
         // if (request('table_search')) {
         //     $users->where('nama', 'like', '%' . request('table_search') . '%');
         // }
-        return view('admin.data-karyawan.index', ['users' => $users]);
+        return view('admin.data-karyawan.index', ['users' => $users, 'count' => $count]);
     }
 
     /**
@@ -69,8 +71,7 @@ class UserController extends Controller
         $user->telepon = $request->telepon;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
-        $user->email_verified_at = now();
-        $user->remember_token = Str::random(10);
+        $user->foto = $request->file('foto')->store('foto-user');
         $user->save();
         return redirect('/admin/data-karyawan')->with('tambah', 'Data Karyawan Berhasil Ditambahkan.');
     }
@@ -130,6 +131,7 @@ class UserController extends Controller
         $user->telepon = $request->telepon;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
+        $user->foto = $request->file('foto')->store('foto-user');
         $user->save();
         return redirect('/admin/data-karyawan')->with('perbarui', 'Data Karyawan Berhasil Diperbarui.');
     }
@@ -144,6 +146,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $user->delete();
+        Storage::delete($user->foto);
         return redirect('/admin/data-karyawan')->with('hapus', 'Data Karyawan Berhasil Dihapus.');
     }
 }

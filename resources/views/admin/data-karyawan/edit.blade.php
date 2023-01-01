@@ -13,7 +13,7 @@
             <div class="card-header">
               <h3 class="card-title">Ubah Data Karyawan</h3>
             </div>
-            <form action="/admin/data-karyawan/{{ $user->id }}" method="POST">
+            <form action="/admin/data-karyawan/{{ $user->id }}" method="POST" enctype="multipart/form-data">
               @method('PUT')
               @csrf
               <div class="card-body">
@@ -111,9 +111,15 @@
                   <input type="password" class="form-control" id="password" placeholder="Password" name="password"
                     value="">
                 </div>
+                <div class="form-group">
+                  <label for="foto">Foto</label>
+                  <input type="file" class="form-control-file" id="foto" name="foto"
+                    value="{{ $user->foto }}">
+                </div>
               </div>
               <div class="card-footer">
                 <button type="submit" class="btn btn-primary">Perbarui</button>
+                <a href="/admin/data-karyawan" class="btn btn-danger">Batal</a>
               </div>
             </form>
           </div>

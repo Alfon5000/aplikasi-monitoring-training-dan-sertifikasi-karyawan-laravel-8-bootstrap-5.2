@@ -20,15 +20,16 @@ class CreateUsersTable extends Migration
             $table->string('nik');
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
-            $table->string('alamat');
+            $table->text('alamat');
             $table->string('kota');
             $table->string('provinsi');
             $table->string('telepon');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->rememberToken();
+            $table->text('foto');
             $table->timestamps();
+            // $table->timestamp('email_verified_at')->nullable();
+            // $table->rememberToken();
         });
     }
 

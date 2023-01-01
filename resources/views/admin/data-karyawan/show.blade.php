@@ -8,9 +8,13 @@
   <section class="content">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
           <div class="card card-primary">
             <div class="card-body">
+              <div class="mb-5 text-center">
+                <img src="{{ asset('storage/' . $user->foto) }}" alt="{{ $user->nama }}" class="img-thumbnail"
+                  style="height: 275px;">
+              </div>
               <strong>NIK</strong>
               <p class="text-muted">
                 {{ $user->nik }}
@@ -20,7 +24,12 @@
               <p class="text-muted">
                 {{ $user->nama }}
               </p>
-              <hr>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card card-primary">
+            <div class="card-body">
               <strong>Tempat Lahir</strong>
               <p class="text-muted">
                 {{ $user->tempat_lahir }}
@@ -37,15 +46,15 @@
               <hr>
               <strong>Telepon</strong>
               <p class="text-muted">{{ $user->telepon }}</p>
+              <hr>
+              <strong>Email</strong>
+              <p class="text-muted">{{ $user->email }}</p>
             </div>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
           <div class="card card-primary">
             <div class="card-body">
-              <strong>Email</strong>
-              <p class="text-muted">{{ $user->email }}</p>
-              <hr>
               <strong>Alamat</strong>
               <p class="text-muted">{{ $user->alamat }}</p>
               <hr>
@@ -58,11 +67,11 @@
               <strong>Pendidikan</strong>
               <p class="text-muted">{{ $user->pendidikan->nama }}</p>
               <hr>
-              <strong>Jabatan</strong>
-              <p class="text-muted">{{ $user->jabatan->nama }}</p>
-              <hr>
               <strong>Divisi</strong>
               <p class="text-muted">{{ $user->divisi->nama }}</p>
+              <hr>
+              <strong>Jabatan</strong>
+              <p class="text-muted">{{ $user->jabatan->nama }}</p>
             </div>
           </div>
         </div>

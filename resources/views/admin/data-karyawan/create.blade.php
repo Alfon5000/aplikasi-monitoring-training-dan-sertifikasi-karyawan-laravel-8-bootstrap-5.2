@@ -13,7 +13,7 @@
             <div class="card-header">
               <h3 class="card-title">Masukkan Data Karyawan</h3>
             </div>
-            <form action="/admin/data-karyawan" method="POST">
+            <form action="/admin/data-karyawan" method="POST" enctype="multipart/form-data">
               @csrf
               <div class="card-body">
                 <div class="form-group">
@@ -37,7 +37,7 @@
                 <div class="form-group">
                   <label for="jenis-kelamin">Jenis Kelamin</label>
                   <select class="form-control" id="jenis-kelamin" name="jenis_kelamin_id">
-                    <option value="">----- Jenis Kelamin -----</option>
+                    <option value="">-- Pilih Jenis Kelamin --</option>
                     @foreach ($jenis_kelamins as $jenis_kelamin)
                       <option value="{{ $jenis_kelamin->id }}">{{ $jenis_kelamin->nama }}</option>
                     @endforeach
@@ -46,7 +46,7 @@
                 <div class="form-group">
                   <label for="agama">Agama</label>
                   <select class="form-control" id="agama" name="agama_id">
-                    <option value="">----- Agama -----</option>
+                    <option value="">-- Pilih Agama --</option>
                     @foreach ($agamas as $agama)
                       <option value="{{ $agama->id }}">{{ $agama->nama }}</option>
                     @endforeach
@@ -67,7 +67,7 @@
                 <div class="form-group">
                   <label for="pendidikan">Pendidikan</label>
                   <select class="form-control" id="pendidikan" name="pendidikan_id">
-                    <option value="">----- Pendidikan -----</option>
+                    <option value="">-- Pilih Pendidikan --</option>
                     @foreach ($pendidikans as $pendidikan)
                       <option value="{{ $pendidikan->id }}">{{ $pendidikan->nama }}</option>
                     @endforeach
@@ -76,7 +76,7 @@
                 <div class="form-group">
                   <label for="jabatan">Jabatan</label>
                   <select class="form-control" id="jabatan" name="jabatan_id">
-                    <option value="">----- Jabatan -----</option>
+                    <option value="">-- Pilih Jabatan --</option>
                     @foreach ($jabatans as $jabatan)
                       <option value="{{ $jabatan->id }}">{{ $jabatan->nama }}</option>
                     @endforeach
@@ -85,7 +85,7 @@
                 <div class="form-group">
                   <label for="divisi">Divisi</label>
                   <select class="form-control" id="divisi" name="divisi_id">
-                    <option value="">----- Divisi -----</option>
+                    <option value="">-- Pilih Divisi --</option>
                     @foreach ($divisis as $divisi)
                       <option value="{{ $divisi->id }}">{{ $divisi->nama }}</option>
                     @endforeach
@@ -103,9 +103,14 @@
                   <label for="password">Password</label>
                   <input type="password" class="form-control" id="password" placeholder="Password" name="password">
                 </div>
+                <div class="form-group">
+                  <label for="foto">Foto</label>
+                  <input type="file" class="form-control-file" id="foto" name="foto">
+                </div>
               </div>
               <div class="card-footer">
                 <button type="submit" class="btn btn-primary">Tambah</button>
+                <a href="/admin/data-karyawan" class="btn btn-danger">Batal</a>
               </div>
             </form>
           </div>

@@ -53,38 +53,47 @@
               </div> --}}
             </div>
             <div class="card-body">
-              <table class="table table-bordered text-center">
-                <thead>
-                  <tr>
-                    <th>No.</th>
-                    <th>Nama</th>
-                    <th>NIK</th>
-                    <th>Jabatan</th>
-                    <th>Divisi</th>
-                    <th>Aksi</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  @foreach ($users as $user)
+              @if ($count <= 0)
+                <h3 class="text-center">Data Karyawan Belum Ada!</h3>
+              @else
+                <table class="table table-bordered text-center">
+                  <thead>
                     <tr>
-                      <td>{{ $loop->iteration }}</td>
-                      <td>{{ $user->nama }}</td>
-                      <td>{{ $user->nik }}</td>
-                      <td>{{ $user->jabatan->nama }}</td>
-                      <td>{{ $user->divisi->nama }}</td>
-                      <td>
-                        <a href="/admin/data-karyawan/{{ $user->id }}" class="btn btn-info">Detail</a>
-                        <a href="/admin/data-karyawan/{{ $user->id }}/edit" class="btn btn-warning">Ubah</a>
-                        <form action="/admin/data-karyawan/{{ $user->id }}" method="POST" class="d-inline">
-                          @csrf
-                          @method('DELETE')
-                          <button class="btn btn-danger">Hapus</button>
-                        </form>
-                      </td>
+                      <th>No.</th>
+                      <th>Foto</th>
+                      <th>Nama</th>
+                      <th>NIK</th>
+                      <th>Jabatan</th>
+                      <th>Divisi</th>
+                      <th>Aksi</th>
                     </tr>
-                  @endforeach
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    @foreach ($users as $user)
+                      <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>
+                          <img src="{{ asset('storage/' . $user->foto) }}" alt="$user->nama" class="img-thumbnail"
+                            style="max-height: 100px">
+                        </td>
+                        <td>{{ $user->nama }}</td>
+                        <td>{{ $user->nik }}</td>
+                        <td>{{ $user->jabatan->nama }}</td>
+                        <td>{{ $user->divisi->nama }}</td>
+                        <td>
+                          <a href="/admin/data-karyawan/{{ $user->id }}" class="btn btn-info">Detail</a>
+                          <a href="/admin/data-karyawan/{{ $user->id }}/edit" class="btn btn-warning">Ubah</a>
+                          <form action="/admin/data-karyawan/{{ $user->id }}" method="POST" class="d-inline">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger">Hapus</button>
+                          </form>
+                        </td>
+                      </tr>
+                    @endforeach
+                  </tbody>
+                </table>
+              @endif
             </div>
             <div class="card-footer clearfix">
               <ul class="pagination pagination-sm m-0 justify-content-center">
