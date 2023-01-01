@@ -5,9 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TrainingController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PelaksanaanTrainingController;
 use App\Http\Controllers\SertifikasiController;
 use App\Http\Controllers\PendaftaranTrainingController;
-use App\Models\PendaftaranTraining;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +36,14 @@ Route::prefix('admin')->group(function () {
     Route::get('/pendaftaran-training', [PendaftaranTrainingController::class, 'index']);
     Route::put('/pendaftaran-training/accept/{id}', [PendaftaranTrainingController::class, 'accept']);
     Route::put('/pendaftaran-training/reject/{id}', [PendaftaranTrainingController::class, 'reject']);
+
+    Route::get('/pendaftaran-sertifikasi', [PendaftaranSertifikasiController::class, 'index']);
+    Route::put('/pendaftaran-sertifikasi/accept/{id}', [PendaftaranSertifikasiController::class, 'accept']);
+    Route::put('/pendaftaran-sertifikasi/reject/{id}', [PendaftaranSertifikasiController::class, 'reject']);
+
+    Route::get('/pelaksanaan-training', [PelaksanaanTrainingController::class, 'index']);
+
+    Route::get('/ujian-sertifikasi', [PelaksanaanTrainingController::class, 'index']);
 });
 
 Auth::routes();

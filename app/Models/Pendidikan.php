@@ -9,6 +9,8 @@ class Pendidikan extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['nama'];
+
     public function users()
     {
         return $this->hasMany(User::class);

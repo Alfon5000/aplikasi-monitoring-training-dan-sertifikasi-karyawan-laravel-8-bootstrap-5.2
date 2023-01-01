@@ -16,6 +16,7 @@ class CreateSertifikasisTable extends Migration
         Schema::create('sertifikasis', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
+            $table->string('bidang');
             $table->date('tanggal_ujian');
             $table->text('alamat');
             $table->string('kota');

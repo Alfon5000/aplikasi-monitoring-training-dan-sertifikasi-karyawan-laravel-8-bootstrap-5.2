@@ -23,6 +23,20 @@
                     value="{{ $training->nama }}">
                 </div>
                 <div class="form-group">
+                  <label for="bidang">Bidang</label>
+                  <input type="text" class="form-control" id="bidang" placeholder="Nama" name="bidang"
+                    value="{{ $training->bidang }}">
+                </div>
+                <div class="form-group">
+                  <label for="metode">Metode</label>
+                  <select class="form-control" id="metode" name="metode_id">
+                    <option value="{{ $training->metode->id }}">{{ $training->metode->nama }}</option>
+                    @foreach ($metodes as $metode)
+                      <option value="{{ $metode->id }}">{{ $metode->nama }}</option>
+                    @endforeach
+                  </select>
+                </div>
+                <div class="form-group">
                   <label for="tanggal-mulai">Tanggal Mulai</label>
                   <input type="date" class="form-control" id="tanggal-mulai" placeholder="Tanggal Mulai"
                     name="tanggal_mulai" value="{{ $training->tanggal_mulai }}">

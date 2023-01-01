@@ -20,6 +20,16 @@
                 {{ $training->nama }}
               </p>
               <hr>
+              <strong>Bidang</strong>
+              <p class="text-muted">
+                {{ $training->bidang }}
+              </p>
+              <hr>
+              <strong>Metode</strong>
+              <p class="text-muted">
+                {{ $training->metode->nama }}
+              </p>
+              <hr>
               <strong>Tanggal Mulai</strong>
               <p class="text-muted">
                 {{ $training->tanggal_mulai }}

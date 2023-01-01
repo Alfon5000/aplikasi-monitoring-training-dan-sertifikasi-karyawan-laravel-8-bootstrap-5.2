@@ -21,6 +21,19 @@
                   <input type="text" class="form-control" id="nama" placeholder="Nama" name="nama">
                 </div>
                 <div class="form-group">
+                  <label for="bidang">Bidang</label>
+                  <input type="text" class="form-control" id="bidang" placeholder="Bidang" name="bidang">
+                </div>
+                <div class="form-group">
+                  <label for="metode">Metode</label>
+                  <select class="form-control" id="metode" name="metode_id">
+                    <option value="">-- Pilih Metode --</option>
+                    @foreach ($metodes as $metode)
+                      <option value="{{ $metode->id }}">{{ $metode->nama }}</option>
+                    @endforeach
+                  </select>
+                </div>
+                <div class="form-group">
                   <label for="tanggal-mulai">Tanggal Mulai</label>
                   <input type="date" class="form-control" id="tanggal-mulai" placeholder="Tanggal Mulai"
                     name="tanggal_mulai">

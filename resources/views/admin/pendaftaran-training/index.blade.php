@@ -97,20 +97,8 @@
                               @csrf
                               <button class="btn btn-danger">Tolak</button>
                             </form>
-                          @elseif($pendaftaran->statusPendaftaran->id == 2)
-                            <form action="/admin/pendaftaran-training/reject/{{ $pendaftaran->id }}" method="POST"
-                              class="d-inline">
-                              @method('PUT')
-                              @csrf
-                              <button class="btn btn-danger">Tolak</button>
-                            </form>
                           @else
-                            <form action="/admin/pendaftaran-training/accept/{{ $pendaftaran->id }}" method="POST"
-                              class="d-inline">
-                              @method('PUT')
-                              @csrf
-                              <button class="btn btn-primary">Setuju</button>
-                            </form>
+                            Tidak Ada Aksi
                           @endif
                         </td>
                       </tr>

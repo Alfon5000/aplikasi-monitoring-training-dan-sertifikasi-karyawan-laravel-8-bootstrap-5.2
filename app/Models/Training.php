@@ -10,4 +10,9 @@ class Training extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function metode()
+    {
+        return $this->belongsTo(Metode::class);
+    }
 }

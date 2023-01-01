@@ -20,6 +20,16 @@
                 {{ $sertifikasi->nama }}
               </p>
               <hr>
+              <strong>Bidang</strong>
+              <p class="text-muted">
+                {{ $sertifikasi->bidang }}
+              </p>
+              <hr>
+              <strong>Metode</strong>
+              <p class="text-muted">
+                {{ $sertifikasi->metode->nama }}
+              </p>
+              <hr>
               <strong>Tanggal Ujian</strong>
               <p class="text-muted">
                 {{ $sertifikasi->tanggal_ujian }}

@@ -16,36 +16,25 @@ class PendidikanSeeder extends Seeder
     {
         $pendidikans = [
             [
-                'nama' => 'SMA',
-                'created_at' => now(),
-                'updated_at' => now()
+                'nama' => 'SMA'
             ],
             [
-                'nama' => 'SMK',
-                'created_at' => now(),
-                'updated_at' => now()
+                'nama' => 'SMK'
             ],
             [
-                'nama' => 'D3',
-                'created_at' => now(),
-                'updated_at' => now()
+                'nama' => 'D3'
             ],
             [
-                'nama' => 'S1',
-                'created_at' => now(),
-                'updated_at' => now()
+                'nama' => 'S1'
             ],
             [
-                'nama' => 'S2',
-                'created_at' => now(),
-                'updated_at' => now()
+                'nama' => 'S2'
             ],
             [
-                'nama' => 'S3',
-                'created_at' => now(),
-                'updated_at' => now()
+                'nama' => 'S3'
             ],
         ];
+
         foreach ($pendidikans as $pendidikan) {
             Pendidikan::insert($pendidikan);
         }

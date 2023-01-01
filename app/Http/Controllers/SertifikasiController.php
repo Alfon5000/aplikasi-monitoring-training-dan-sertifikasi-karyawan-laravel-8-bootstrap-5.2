@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Metode;
 use App\Models\Sertifikasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -25,7 +26,7 @@ class SertifikasiController extends Controller
      */
     public function create()
     {
-        return view('admin.data-sertifikasi.create');
+        return view('admin.data-sertifikasi.create', ['metodes' => Metode::all()]);
     }
 
     /**
@@ -38,6 +39,8 @@ class SertifikasiController extends Controller
     {
         $sertifikasi = new Sertifikasi();
         $sertifikasi->nama = $request->nama;
+        $sertifikasi->metode_id = $request->metode_id;
+        $sertifikasi->bidang = $request->bidang;
         $sertifikasi->tanggal_ujian = $request->tanggal_ujian;
         $sertifikasi->alamat = $request->alamat;
         $sertifikasi->kota = $request->kota;
@@ -68,7 +71,11 @@ class SertifikasiController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.data-sertifikasi.edit', ['sertifikasi' => Sertifikasi::find($id)]);
+        $sertifikasi = Sertifikasi::find($id);
+        return view('admin.data-sertifikasi.edit', [
+            'sertifikasi' => $sertifikasi,
+            'metodes' => Metode::where('id', '!=', $sertifikasi->metode_id)->get()
+        ]);
     }
 
     /**
@@ -82,6 +89,8 @@ class SertifikasiController extends Controller
     {
         $sertifikasi = Sertifikasi::find($id);
         $sertifikasi->nama = $request->nama;
+        $sertifikasi->metode_id = $request->metode_id;
+        $sertifikasi->bidang = $request->bidang;
         $sertifikasi->tanggal_ujian = $request->tanggal_ujian;
         $sertifikasi->alamat = $request->alamat;
         $sertifikasi->kota = $request->kota;

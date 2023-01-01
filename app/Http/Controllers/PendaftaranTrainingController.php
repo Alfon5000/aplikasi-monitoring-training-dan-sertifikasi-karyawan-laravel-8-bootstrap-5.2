@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PelaksanaanTraining;
 use App\Models\PendaftaranTraining;
 use Illuminate\Http\Request;
 
@@ -88,6 +89,11 @@ class PendaftaranTrainingController extends Controller
         $pendaftaran_training = PendaftaranTraining::find($id);
         $pendaftaran_training->status_pendaftaran_id = 2;
         $pendaftaran_training->save();
+        $pelaksanaan_training = new PelaksanaanTraining;
+        $pelaksanaan_training->user_id = $pendaftaran_training->user_id;
+        $pelaksanaan_training->training_id = $pendaftaran_training->training_id;
+        $pelaksanaan_training->status_pelaksanaan_id = 1;
+        $pelaksanaan_training->save();
         return redirect('/admin/pendaftaran-training');
     }
 

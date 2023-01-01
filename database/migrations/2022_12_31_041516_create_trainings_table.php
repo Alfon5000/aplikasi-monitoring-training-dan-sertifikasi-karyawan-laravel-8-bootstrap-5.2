@@ -16,7 +16,7 @@ class CreateTrainingsTable extends Migration
         Schema::create('trainings', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->text('gambar');
+            $table->string('bidang');
             $table->date('tanggal_mulai');
             $table->date('tanggal_selesai');
             $table->string('alamat');
@@ -24,6 +24,7 @@ class CreateTrainingsTable extends Migration
             $table->string('provinsi');
             $table->integer('kuota');
             $table->text('deskripsi');
+            $table->text('gambar');
             $table->timestamps();
         });
     }
