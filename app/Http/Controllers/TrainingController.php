@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Training;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class TrainingController extends Controller
 {
@@ -14,7 +15,7 @@ class TrainingController extends Controller
      */
     public function index()
     {
-        return view('admin.data-training.index', ['trainings' => Training::paginate(5)]);
+        return view('admin.data-training.index', ['trainings' => Training::paginate(5), 'count' => Training::all()->count()]);
     }
 
     /**
@@ -55,9 +56,9 @@ class TrainingController extends Controller
      * @param  \App\Models\Training  $training
      * @return \Illuminate\Http\Response
      */
-    public function show(Training $training)
+    public function show($id)
     {
-        //
+        return view('admin.data-training.show', ['training' => Training::find($id)]);
     }
 
     /**
@@ -66,9 +67,9 @@ class TrainingController extends Controller
      * @param  \App\Models\Training  $training
      * @return \Illuminate\Http\Response
      */
-    public function edit(Training $training)
+    public function edit($id)
     {
-        //
+        return view('admin.data-training.edit', ['training' => Training::find($id)]);
     }
 
     /**
@@ -78,9 +79,19 @@ class TrainingController extends Controller
      * @param  \App\Models\Training  $training
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Training $training)
+    public function update(Request $request, $id)
     {
-        //
+        $training = Training::find($id);
+        $training->nama = $request->nama;
+        $training->tanggal_mulai = $request->tanggal_mulai;
+        $training->tanggal_selesai = $request->tanggal_selesai;
+        $training->alamat = $request->alamat;
+        $training->kota = $request->kota;
+        $training->provinsi = $request->provinsi;
+        $training->deskripsi = $request->deskripsi;
+        $training->gambar = $request->file('gambar')->store('gambar-training');
+        $training->save();
+        return redirect('/admin/data-training')->with('perbarui', 'Data Training Berhasil Diperbarui.');
     }
 
     /**
@@ -89,8 +100,11 @@ class TrainingController extends Controller
      * @param  \App\Models\Training  $training
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Training $training)
+    public function destroy($id)
     {
-        //
+        $training = Training::find($id);
+        $training->delete();
+        Storage::delete($training->gambar);
+        return redirect('/admin/data-training')->with('hapus', 'Data Training Berhasil Dihapus.');
     }
 }

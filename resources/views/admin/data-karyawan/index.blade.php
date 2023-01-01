@@ -54,7 +54,7 @@
             </div>
             <div class="card-body">
               @if ($count <= 0)
-                <h3 class="text-center">Data Karyawan Belum Ada!</h3>
+                <h3 class="text-center">@yield('title') Belum Ada!</h3>
               @else
                 <table class="table table-bordered text-center">
                   <thead>
