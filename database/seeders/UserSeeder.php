@@ -36,7 +36,7 @@ class UserSeeder extends Seeder
                 'email' => 'alfonso@gmail.com',
                 'password' => Hash::make('password'),
                 'created_at' => now(),
-                'updated_at' => now(),
+                'updated_at' => now()
             ]
         );
         User::factory(20)->create();

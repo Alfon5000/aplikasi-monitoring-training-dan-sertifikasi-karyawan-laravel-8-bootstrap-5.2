@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\StatusPendaftaran;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -22,6 +23,7 @@ class DatabaseSeeder extends Seeder
             JabatanSeeder::class,
             DivisiSeeder::class,
             // UserSeeder::class,
+            StatusPendaftaranSeeder::class,
             // TrainingSeeder::class,
             // SertifikasiSeeder::class,
         ]);
