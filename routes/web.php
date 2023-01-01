@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\TrainingController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SertifikasiController;
+use App\Http\Controllers\UjianSertifikasiController;
 use App\Http\Controllers\PelaksanaanTrainingController;
 use App\Http\Controllers\PendaftaranTrainingController;
 use App\Http\Controllers\PendaftaranSertifikasiController;
@@ -45,7 +46,7 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/pelaksanaan-training', [PelaksanaanTrainingController::class, 'index']);
 
-    Route::get('/ujian-sertifikasi', [PelaksanaanTrainingController::class, 'index']);
+    Route::get('/ujian-sertifikasi', [UjianSertifikasiController::class, 'index']);
 });
 
 Auth::routes();

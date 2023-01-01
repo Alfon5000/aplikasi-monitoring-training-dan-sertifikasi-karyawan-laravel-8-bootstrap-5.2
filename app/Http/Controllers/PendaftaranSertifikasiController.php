@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PendaftaranSertifikasi;
 use Illuminate\Http\Request;
+use App\Models\UjianSertifikasi;
+use App\Models\PendaftaranSertifikasi;
 
 class PendaftaranSertifikasiController extends Controller
 {

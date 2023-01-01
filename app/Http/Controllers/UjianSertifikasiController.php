@@ -14,7 +14,10 @@ class UjianSertifikasiController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.ujian-sertifikasi.index', [
+            'ujian_sertifikasis' => UjianSertifikasi::latest()->paginate(5),
+            'count' => UjianSertifikasi::all()->count()
+        ]);
     }
 
     /**
