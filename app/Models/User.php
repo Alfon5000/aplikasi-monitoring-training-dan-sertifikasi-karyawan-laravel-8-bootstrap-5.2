@@ -67,4 +67,24 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Divisi::class);
     }
+
+    public function pendaftaranTraining()
+    {
+        return $this->hasMany(PendaftaranTraining::class);
+    }
+
+    public function pendaftaranSertifikasi()
+    {
+        return $this->hasMany(PendaftaranSertifikasi::class);
+    }
+
+    public function pelaksanaanTraining()
+    {
+        return $this->hasMany(PelaksanaanTraining::class);
+    }
+
+    public function ujianSertifikasi()
+    {
+        return $this->hasMany(UjianSertifikasi::class);
+    }
 }

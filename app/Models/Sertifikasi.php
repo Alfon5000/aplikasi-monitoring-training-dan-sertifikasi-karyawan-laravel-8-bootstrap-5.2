@@ -15,4 +15,14 @@ class Sertifikasi extends Model
     {
         return $this->belongsTo(Metode::class);
     }
+
+    public function pendaftaranSertifikasi()
+    {
+        return $this->hasMany(PendaftaranSertifikasi::class);
+    }
+
+    public function ujianSertifikasi()
+    {
+        return $this->hasMany(UjianSertifikasi::class);
+    }
 }

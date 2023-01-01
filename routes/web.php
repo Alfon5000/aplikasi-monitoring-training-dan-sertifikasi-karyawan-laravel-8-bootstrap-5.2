@@ -2,12 +2,14 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TrainingController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\PelaksanaanTrainingController;
 use App\Http\Controllers\SertifikasiController;
+use App\Http\Controllers\PelaksanaanTrainingController;
 use App\Http\Controllers\PendaftaranTrainingController;
+use App\Http\Controllers\PendaftaranSertifikasiController;
 
 /*
 |--------------------------------------------------------------------------
