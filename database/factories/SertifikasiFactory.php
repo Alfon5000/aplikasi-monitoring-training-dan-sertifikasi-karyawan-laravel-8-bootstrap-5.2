@@ -22,7 +22,7 @@ class SertifikasiFactory extends Factory
             'nama' => $faker->words(),
             'bidang' => $faker->words(),
             'metode' => Arr::random([Sertifikasi::$metodes]),
-            // 'tanggal_ujian' => $faker->date(),
+            'tanggal_ujian' => $faker->date(),
             'alamat' => $faker->streetAddress(),
             'kota' => $faker->city(),
             'provinsi' => $faker->state(),

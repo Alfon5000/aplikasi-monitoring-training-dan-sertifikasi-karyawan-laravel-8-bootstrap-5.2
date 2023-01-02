@@ -17,7 +17,17 @@ class TrainingController extends Controller
      */
     public function index()
     {
-        return view('admin.data-training.index', ['trainings' => Training::paginate(5), 'count' => Training::all()->count()]);
+        $trainings = Training::latest();
+        $count = Training::all()->count();
+
+        if (request('table_search')) {
+            $trainings->where('nama', 'like', '%' . request('table_search') . '%')->orWhere('bidang', 'like', '%' . request('table_search') . '%')->orWhere('metode', 'like', '%' . request('table_search') . '%');
+        }
+
+        return view('admin.data-training.index', [
+            'trainings' => $trainings->paginate(5)->withQueryString(),
+            'count' => $count
+        ]);
     }
 
     /**

@@ -16,7 +16,17 @@ class SertifikasiController extends Controller
      */
     public function index()
     {
-        return view('admin.data-sertifikasi.index', ['sertifikasis' => Sertifikasi::paginate(5), 'count' => Sertifikasi::all()->count()]);
+        $sertifikasis = Sertifikasi::latest();
+        $count = Sertifikasi::all()->count();
+
+        if (request('table_search')) {
+            $sertifikasis->where('nama', 'like', '%' . request('table_search') . '%')->orWhere('bidang', 'like', '%' . request('table_search') . '%')->orWhere('metode', 'like', '%' . request('table_search') . '%');
+        }
+
+        return view('admin.data-sertifikasi.index', [
+            'sertifikasis' => $sertifikasis->paginate(5)->withQueryString(),
+            'count' => $count
+        ]);
     }
 
     /**

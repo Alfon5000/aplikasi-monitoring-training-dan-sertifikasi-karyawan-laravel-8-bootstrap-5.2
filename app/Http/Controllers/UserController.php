@@ -17,12 +17,17 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::where('role', 'Karyawan')->latest()->paginate(5);
+        $users = User::where('role', 'Karyawan')->latest();
         $count = User::all()->count();
-        // if (request('table_search')) {
-        //     $users->where('nama', 'like', '%' . request('table_search') . '%');
-        // }
-        return view('admin.data-karyawan.index', ['users' => $users, 'count' => $count]);
+
+        if (request('table_search')) {
+            $users->where('nama', 'like', '%' . request('table_search') . '%');
+        }
+
+        return view('admin.data-karyawan.index', [
+            'users' => $users->paginate(5)->withQueryString(),
+            'count' => $count
+        ]);
     }
 
     /**

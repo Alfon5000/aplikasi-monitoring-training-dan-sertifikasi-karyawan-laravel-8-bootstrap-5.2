@@ -15,7 +15,10 @@ class PendaftaranSertifikasiController extends Controller
      */
     public function index()
     {
-        return view('admin.pendaftaran-sertifikasi.index', ['pendaftarans' => PendaftaranSertifikasi::paginate(5), 'count' => PendaftaranSertifikasi::all()->count()]);
+        return view('admin.pendaftaran-sertifikasi.index', [
+            'pendaftarans' => PendaftaranSertifikasi::paginate(5),
+            'count' => PendaftaranSertifikasi::all()->count()
+        ]);
     }
 
     /**

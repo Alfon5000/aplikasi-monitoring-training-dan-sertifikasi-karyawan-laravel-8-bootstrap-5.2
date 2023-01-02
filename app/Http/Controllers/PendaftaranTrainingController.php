@@ -15,7 +15,10 @@ class PendaftaranTrainingController extends Controller
      */
     public function index()
     {
-        return view('admin.pendaftaran-training.index', ['pendaftarans' => PendaftaranTraining::paginate(5), 'count' => PendaftaranTraining::all()->count()]);
+        return view('admin.pendaftaran-training.index', [
+            'pendaftarans' => PendaftaranTraining::paginate(5),
+            'count' => PendaftaranTraining::all()->count()
+        ]);
     }
 
     /**

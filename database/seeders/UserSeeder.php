@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Crypt;
 
 class UserSeeder extends Seeder
 {
@@ -32,7 +32,7 @@ class UserSeeder extends Seeder
                 'jabatan' => 'Manajer',
                 'telepon' => '+6281236665363',
                 'email' => 'alfonso@gmail.com',
-                'password' => Hash::make('password'),
+                'password' => Crypt::encryptString('password'),
                 'role' => 'Admin',
                 'foto' => 'foto.jpg',
                 'created_at' => now(),

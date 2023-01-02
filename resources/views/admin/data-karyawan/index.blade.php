@@ -17,7 +17,7 @@
                   <a href="/admin/data-karyawan/create" class="btn btn-primary">Tambah</a>
                 </div>
               </div>
-              {{-- <div class="card-tools float-right">
+              <div class="card-tools float-right">
                 <form action="/admin/data-karyawan">
                   <div class="input-group input-group-sm" style="width: 300px;">
                     <input type="text" name="table_search" class="form-control float-right" placeholder="Search"
@@ -29,7 +29,7 @@
                     </div>
                   </div>
                 </form>
-              </div> --}}
+              </div>
             </div>
             <div class="card-body">
               @if ($count <= 0)
