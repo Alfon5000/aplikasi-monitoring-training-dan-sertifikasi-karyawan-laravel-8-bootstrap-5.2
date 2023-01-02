@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
@@ -63,7 +64,7 @@ class UserController extends Controller
         $user->jabatan = $request->jabatan;
         $user->telepon = $request->telepon;
         $user->email = $request->email;
-        $user->password = Hash::make($request->password);
+        $user->password = Crypt::encryptString($request->password);
         $user->foto = $request->file('foto')->store('foto-user');
         $user->role = 'Karyawan';
         $user->save();
@@ -92,6 +93,7 @@ class UserController extends Controller
         $user = User::find($id);
         return view('admin.data-karyawan.edit', [
             'user' => $user,
+            'user_password' => Crypt::decryptString($user->password),
             'jenis_kelamins' => array_diff(User::$jenis_kelamins, array($user->jenis_kelamin)),
             'agamas' => array_diff(User::$agamas, array($user->agama)),
             'pendidikans' => array_diff(User::$pendidikans, array($user->pendidikan)),
@@ -124,7 +126,7 @@ class UserController extends Controller
         $user->jabatan = $request->jabatan;
         $user->telepon = $request->telepon;
         $user->email = $request->email;
-        $user->password = Hash::make($request->password);
+        $user->password = Crypt::encryptString($request->password);
         $user->foto = $request->file('foto')->store('foto-user');
         $user->save();
         return redirect('/admin/data-karyawan')->with('perbarui', 'Data Karyawan Berhasil Diperbarui.');

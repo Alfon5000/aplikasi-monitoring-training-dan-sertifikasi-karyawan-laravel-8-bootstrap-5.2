@@ -9,28 +9,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
-          @if (session()->has('tambah'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-              {{ session('tambah') }}
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-          @elseif(session()->has('perbarui'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-              {{ session('perbarui') }}
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-          @elseif(session()->has('hapus'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-              {{ session('hapus') }}
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-          @endif
+          @include('flash-message')
           <div class="card">
             <div class="card-header">
               {{-- <div class="card-tools float-left">
@@ -74,12 +53,12 @@
                         <td>{{ $pelaksanaan_training->user->nama }}</td>
                         <td>{{ $pelaksanaan_training->training->nama }}</td>
                         <td>
-                          @if ($pelaksanaan_training->statusPelaksanaan->id == 1)
-                            <span class="badge badge-danger">{{ $pelaksanaan_training->statusPelaksanaan->nama }}</span>
-                          @elseif($pelaksanaan_training->statusPelaksanaan->id == 2)
-                            <span class="badge badge-warning">{{ $pelaksanaan_training->statusPelaksanaan->nama }}</span>
+                          @if ($pelaksanaan_training->status == 'Belum Mulai')
+                            <span class="badge badge-danger">{{ $pelaksanaan_training->status }}</span>
+                          @elseif($pelaksanaan_training->status == 'Sedang Dilaksanakan')
+                            <span class="badge badge-warning">{{ $pelaksanaan_training->status }}</span>
                           @else
-                            <span class="badge badge-primary">{{ $pelaksanaan_training->statusPelaksanaan->nama }}</span>
+                            <span class="badge badge-success">{{ $pelaksanaan_training->status }}</span>
                           @endif
                         </td>
                       </tr>

@@ -13,7 +13,7 @@ class UjianSertifikasi extends Model
 
     public static $status = ['Belum Mulai', 'Sedang Dilaksanakan', 'Sudah Selesai'];
 
-    public static $keterangans = ['Belum Ujian', 'Lulus', 'Tidak Lulus'];
+    public static $keterangans = ['Menunggu Hasil', 'Lulus', 'Tidak Lulus'];
 
     public function user()
     {

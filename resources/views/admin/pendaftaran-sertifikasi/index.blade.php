@@ -73,18 +73,18 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $pendaftaran->user->nama }}</td>
                         <td>{{ $pendaftaran->sertifikasi->nama }}</td>
-                        <td>{{ $pendaftaran->tanggal_pendaftaran }}</td>
+                        <td>{{ $pendaftaran->tanggal }}</td>
                         <td>
-                          @if ($pendaftaran->statusPendaftaran->id == 1)
-                            <span class="badge badge-secondary">{{ $pendaftaran->statusPendaftaran->nama }}</span>
-                          @elseif($pendaftaran->statusPendaftaran->id == 2)
-                            <span class="badge badge-primary">{{ $pendaftaran->statusPendaftaran->nama }}</span>
+                          @if ($pendaftaran->status == 'Menunggu Konfirmasi')
+                            <span class="badge badge-secondary">{{ $pendaftaran->status }}</span>
+                          @elseif($pendaftaran->status == 'Disetujui')
+                            <span class="badge badge-primary">{{ $pendaftaran->status }}</span>
                           @else
-                            <span class="badge badge-danger">{{ $pendaftaran->statusPendaftaran->nama }}</span>
+                            <span class="badge badge-danger">{{ $pendaftaran->status }}</span>
                           @endif
                         </td>
                         <td>
-                          @if ($pendaftaran->statusPendaftaran->id == 1)
+                          @if ($pendaftaran->status == 'Menunggu Konfirmasi')
                             <form action="/admin/pendaftaran-sertifikasi/accept/{{ $pendaftaran->id }}" method="POST"
                               class="d-inline">
                               @method('PUT')

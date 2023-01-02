@@ -57,7 +57,7 @@
                 </div>
                 <div class="form-group">
                   <label for="alamat">Alamat</label>
-                  <textarea class="form-control" id="alamat" rows="3" name="alamat" value="{{ $user->alamat }}"></textarea>
+                  <textarea class="form-control" id="alamat" rows="3" name="alamat" value="{{ $user->alamat }}">{{ $user->alamat }}</textarea>
                 </div>
                 <div class="form-group">
                   <label for="kota">Kota</label>
@@ -109,7 +109,7 @@
                 <div class="form-group">
                   <label for="password">Password</label>
                   <input type="password" class="form-control" id="password" placeholder="Password" name="password"
-                    value="">
+                    value="{{ $user_password }}">
                 </div>
                 <div class="form-group">
                   <label for="foto">Foto</label>

@@ -64,6 +64,7 @@
                       <th>Nama Karyawan</th>
                       <th>Nama Sertifikasi</th>
                       <th>Status Pelaksanaan</th>
+                      <th>Keterangan</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -74,12 +75,21 @@
                         <td>{{ $ujian_sertifikasi->user->nama }}</td>
                         <td>{{ $ujian_sertifikasi->sertifikasi->nama }}</td>
                         <td>
-                          @if ($ujian_sertifikasi->statusPelaksanaan->id == 1)
-                            <span class="badge badge-danger">{{ $ujian_sertifikasi->statusPelaksanaan->nama }}</span>
-                          @elseif($ujian_sertifikasi->statusPelaksanaan->id == 2)
-                            <span class="badge badge-warning">{{ $ujian_sertifikasi->statusPelaksanaan->nama }}</span>
+                          @if ($ujian_sertifikasi->status == 'Belum Mulai')
+                            <span class="badge badge-danger">{{ $ujian_sertifikasi->status }}</span>
+                          @elseif($ujian_sertifikasi->status == 'Sedang Dilaksanakan')
+                            <span class="badge badge-warning">{{ $ujian_sertifikasi->status }}</span>
                           @else
-                            <span class="badge badge-primary">{{ $ujian_sertifikasi->statusPelaksanaan->nama }}</span>
+                            <span class="badge badge-success">{{ $ujian_sertifikasi->status }}</span>
+                          @endif
+                        </td>
+                        <td>
+                          @if ($ujian_sertifikasi->keterangan == 'Menunggu Hasil')
+                            <span class="badge badge-secondary">{{ $ujian_sertifikasi->keterangan }}</span>
+                          @elseif($ujian_sertifikasi->keterangan == 'Lulus')
+                            <span class="badge badge-success">{{ $ujian_sertifikasi->keterangan }}</span>
+                          @else
+                            <span class="badge badge-danger">{{ $ujian_sertifikasi->keterangan }}</span>
                           @endif
                         </td>
                       </tr>

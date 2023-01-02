@@ -87,12 +87,12 @@ class PendaftaranTrainingController extends Controller
     public function accept($id)
     {
         $pendaftaran_training = PendaftaranTraining::find($id);
-        $pendaftaran_training->status_pendaftaran_id = 2;
+        $pendaftaran_training->status = 'Disetujui';
         $pendaftaran_training->save();
         $pelaksanaan_training = new PelaksanaanTraining;
         $pelaksanaan_training->user_id = $pendaftaran_training->user_id;
         $pelaksanaan_training->training_id = $pendaftaran_training->training_id;
-        $pelaksanaan_training->status_pelaksanaan_id = 1;
+        $pelaksanaan_training->status = 'Belum Dimulai';
         $pelaksanaan_training->save();
         return redirect('/admin/pendaftaran-training');
     }
@@ -100,7 +100,7 @@ class PendaftaranTrainingController extends Controller
     public function reject($id)
     {
         $pendaftaran_training = PendaftaranTraining::find($id);
-        $pendaftaran_training->status_pendaftaran_id = 3;
+        $pendaftaran_training->status = 'Ditolak';
         $pendaftaran_training->save();
         return redirect('/admin/pendaftaran-training');
     }

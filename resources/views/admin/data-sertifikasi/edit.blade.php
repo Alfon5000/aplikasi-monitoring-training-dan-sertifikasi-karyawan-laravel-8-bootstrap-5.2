@@ -24,7 +24,7 @@
                 </div>
                 <div class="form-group">
                   <label for="bidang">Bidang</label>
-                  <input type="text" class="form-control" id="bidang" placeholder="Nama" name="bidang"
+                  <input type="text" class="form-control" id="bidang" placeholder="Bidang" name="bidang"
                     value="{{ $sertifikasi->bidang }}">
                 </div>
                 <div class="form-group">
@@ -43,7 +43,7 @@
                 </div>
                 <div class="form-group">
                   <label for="alamat">Alamat</label>
-                  <textarea class="form-control" id="alamat" rows="3" name="alamat" value="{{ $sertifikasi->alamat }}"></textarea>
+                  <textarea class="form-control" id="alamat" rows="3" name="alamat" value="{{ $sertifikasi->alamat }}">{{ $sertifikasi->alamat }}</textarea>
                 </div>
                 <div class="form-group">
                   <label for="kota">Kota</label>
@@ -62,7 +62,7 @@
                 </div>
                 <div class="form-group">
                   <label for="deskripsi">Deskripsi</label>
-                  <textarea class="form-control" id="deskripsi" rows="3" name="deskripsi" value="{{ $sertifikasi->deskripsi }}"></textarea>
+                  <textarea class="form-control" id="deskripsi" rows="3" name="deskripsi" value="{{ $sertifikasi->deskripsi }}">{{ $sertifikasi->deskripsi }}</textarea>
                 </div>
                 <div class="form-group">
                   <label for="gambar">Gambar</label>

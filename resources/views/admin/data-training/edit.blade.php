@@ -48,7 +48,7 @@
                 </div>
                 <div class="form-group">
                   <label for="alamat">Alamat</label>
-                  <textarea class="form-control" id="alamat" rows="3" name="alamat" value="{{ $training->alamat }}"></textarea>
+                  <textarea class="form-control" id="alamat" rows="3" name="alamat" value="{{ $training->alamat }}">{{ $training->alamat }}</textarea>
                 </div>
                 <div class="form-group">
                   <label for="kota">Kota</label>
@@ -67,7 +67,7 @@
                 </div>
                 <div class="form-group">
                   <label for="deskripsi">Deskripsi</label>
-                  <textarea class="form-control" id="deskripsi" rows="3" name="deskripsi" value="{{ $training->deskripsi }}"></textarea>
+                  <textarea class="form-control" id="deskripsi" rows="3" name="deskripsi" value="{{ $training->deskripsi }}">{{ $training->deskripsi }}</textarea>
                 </div>
                 <div class="form-group">
                   <label for="gambar">Gambar</label>
