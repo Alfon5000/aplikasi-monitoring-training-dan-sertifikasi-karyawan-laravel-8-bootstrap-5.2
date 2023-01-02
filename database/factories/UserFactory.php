@@ -2,10 +2,11 @@
 
 namespace Database\Factories;
 
-use Illuminate\Support\Str;
+use App\Models\User;
+use Illuminate\Support\Arr;
 use Faker\Factory as FakerFactory;
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class UserFactory extends Factory
 {
@@ -19,22 +20,23 @@ class UserFactory extends Factory
         $faker = FakerFactory::create('id_ID');
 
         return [
-            'role_id' => 2,
-            'jenis_kelamin_id' => random_int(1, 2),
-            'agama_id' => random_int(1, 6),
-            'pendidikan_id' => random_int(1, 6),
-            'jabatan_id' => random_int(1, 5),
-            'divisi_id' => random_int(1, 5),
             'nama' => $faker->name(),
             'nik' => random_int(0000000001, 9999999999),
             'tempat_lahir' => $faker->city(),
             'tanggal_lahir' => $faker->date(),
+            'jenis_kelamin' => Arr::random(User::$jenis_kelamins),
+            'agama' => Arr::random(User::$agamas),
             'alamat' => $faker->streetAddress(),
             'kota' => $faker->city(),
             'provinsi' => $faker->state(),
+            'pendidikan' => Arr::random(User::$pendidikans),
+            'divisi' => Arr::random(User::$divisis),
+            'jabatan' => Arr::random(User::$jabatans),
             'telepon' => $faker->phoneNumber(),
             'email' => $faker->unique()->safeEmail(),
-            'password' => Hash::make('password')
+            'password' => Hash::make('password'),
+            'role' => 'Karyawan',
+            'foto' => 'foto.jpg'
         ];
     }
 

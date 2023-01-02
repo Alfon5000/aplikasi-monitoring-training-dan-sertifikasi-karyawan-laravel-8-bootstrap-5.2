@@ -27,7 +27,7 @@
               <hr>
               <strong>Metode</strong>
               <p class="text-muted">
-                {{ $training->metode->nama }}
+                {{ $training->metode }}
               </p>
               <hr>
               <strong>Tanggal Mulai</strong>

@@ -27,7 +27,7 @@
               <hr>
               <strong>Metode</strong>
               <p class="text-muted">
-                {{ $sertifikasi->metode->nama }}
+                {{ $sertifikasi->metode }}
               </p>
               <hr>
               <strong>Tanggal Ujian</strong>

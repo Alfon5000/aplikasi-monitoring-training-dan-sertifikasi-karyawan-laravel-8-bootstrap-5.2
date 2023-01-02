@@ -11,10 +11,7 @@ class Training extends Model
 
     protected $guarded = [];
 
-    public function metode()
-    {
-        return $this->belongsTo(Metode::class);
-    }
+    public static $metodes = ['Offline', 'Online'];
 
     public function pendaftaranTraining()
     {
@@ -24,5 +21,10 @@ class Training extends Model
     public function pelaksanaanTraining()
     {
         return $this->hasMany(PelaksanaanTraining::class);
+    }
+
+    public function sertifikatTraining()
+    {
+        return $this->hasMany(SertifikatTraining::class);
     }
 }

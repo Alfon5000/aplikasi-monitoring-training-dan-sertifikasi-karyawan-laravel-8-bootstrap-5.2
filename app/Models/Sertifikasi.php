@@ -11,10 +11,7 @@ class Sertifikasi extends Model
 
     protected $guarded = [];
 
-    public function metode()
-    {
-        return $this->belongsTo(Metode::class);
-    }
+    public static $metodes = ['Offline', 'Online'];
 
     public function pendaftaranSertifikasi()
     {
@@ -24,5 +21,10 @@ class Sertifikasi extends Model
     public function ujianSertifikasi()
     {
         return $this->hasMany(UjianSertifikasi::class);
+    }
+
+    public function sertifikatKompetensi()
+    {
+        return $this->hasMany(SertifikatKompetensi::class);
     }
 }

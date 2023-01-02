@@ -9,28 +9,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
-          @if (session()->has('tambah'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-              {{ session('tambah') }}
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-          @elseif(session()->has('perbarui'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-              {{ session('perbarui') }}
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-          @elseif(session()->has('hapus'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-              {{ session('hapus') }}
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-          @endif
+          @include('flash-message')
           <div class="card">
             <div class="card-header">
               <div class="card-tools float-left">
@@ -60,11 +39,10 @@
                   <thead>
                     <tr>
                       <th>No.</th>
-                      <th>Nama</th>
                       <th>Gambar</th>
-                      <th>Tanggal Mulai</th>
-                      <th>Tanggal Selesai</th>
-                      <th>Kuota</th>
+                      <th>Nama</th>
+                      <th>Bidang</th>
+                      <th>Metode</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
@@ -72,14 +50,13 @@
                     @foreach ($trainings as $training)
                       <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $training->nama }}</td>
                         <td>
                           <img src="{{ asset('storage/' . $training->gambar) }}" alt="{{ $training->nama }}"
                             class="img-thumbnail" style="max-height: 100px">
                         </td>
-                        <td>{{ $training->tanggal_mulai }}</td>
-                        <td>{{ $training->tanggal_selesai }}</td>
-                        <td>{{ $training->kuota }}</td>
+                        <td>{{ $training->nama }}</td>
+                        <td>{{ $training->bidang }}</td>
+                        <td>{{ $training->metode }}</td>
                         <td>
                           <a href="/admin/data-training/{{ $training->id }}" class="btn btn-info">Detail</a>
                           <a href="/admin/data-training/{{ $training->id }}/edit" class="btn btn-warning">Ubah</a>

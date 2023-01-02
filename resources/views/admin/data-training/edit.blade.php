@@ -24,15 +24,15 @@
                 </div>
                 <div class="form-group">
                   <label for="bidang">Bidang</label>
-                  <input type="text" class="form-control" id="bidang" placeholder="Nama" name="bidang"
+                  <input type="text" class="form-control" id="bidang" placeholder="Bidang" name="bidang"
                     value="{{ $training->bidang }}">
                 </div>
                 <div class="form-group">
                   <label for="metode">Metode</label>
-                  <select class="form-control" id="metode" name="metode_id">
-                    <option value="{{ $training->metode->id }}">{{ $training->metode->nama }}</option>
+                  <select class="form-control" id="metode" name="metode">
+                    <option value="{{ $training->metode }}">{{ $training->metode }}</option>
                     @foreach ($metodes as $metode)
-                      <option value="{{ $metode->id }}">{{ $metode->nama }}</option>
+                      <option value="{{ $metode }}">{{ $metode }}</option>
                     @endforeach
                   </select>
                 </div>

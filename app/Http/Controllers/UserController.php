@@ -3,12 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Agama;
-use App\Models\Divisi;
-use App\Models\Jabatan;
-use App\Models\Pendidikan;
-use Illuminate\Support\Str;
-use App\Models\JenisKelamin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -22,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::where('role_id', 2)->latest()->paginate(5);
+        $users = User::where('role', 'Karyawan')->latest()->paginate(5);
         $count = User::all()->count();
         // if (request('table_search')) {
         //     $users->where('nama', 'like', '%' . request('table_search') . '%');
@@ -38,11 +32,11 @@ class UserController extends Controller
     public function create()
     {
         return view('admin.data-karyawan.create', [
-            'jenis_kelamins' => JenisKelamin::all(),
-            'agamas' => Agama::all(),
-            'pendidikans' => Pendidikan::all(),
-            'jabatans' => Jabatan::all(),
-            'divisis' => Divisi::all()
+            'jenis_kelamins' => User::$jenis_kelamins,
+            'agamas' => User::$agamas,
+            'pendidikans' => User::$pendidikans,
+            'jabatans' => User::$jabatans,
+            'divisis' => User::$divisis
         ]);
     }
 
@@ -55,23 +49,23 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $user = new User;
-        $user->role_id = 2;
-        $user->jenis_kelamin_id = $request->jenis_kelamin_id;
-        $user->agama_id = $request->agama_id;
-        $user->pendidikan_id = $request->pendidikan_id;
-        $user->jabatan_id = $request->jabatan_id;
-        $user->divisi_id = $request->divisi_id;
         $user->nama = $request->nama;
         $user->nik = $request->nik;
         $user->tempat_lahir = $request->tempat_lahir;
         $user->tanggal_lahir = $request->tanggal_lahir;
+        $user->jenis_kelamin = $request->jenis_kelamin;
+        $user->agama = $request->agama;
         $user->alamat = $request->alamat;
         $user->kota = $request->kota;
         $user->provinsi = $request->provinsi;
+        $user->pendidikan = $request->pendidikan;
+        $user->divisi = $request->divisi;
+        $user->jabatan = $request->jabatan;
         $user->telepon = $request->telepon;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->foto = $request->file('foto')->store('foto-user');
+        $user->role = 'Karyawan';
         $user->save();
         return redirect('/admin/data-karyawan')->with('tambah', 'Data Karyawan Berhasil Ditambahkan.');
     }
@@ -98,11 +92,11 @@ class UserController extends Controller
         $user = User::find($id);
         return view('admin.data-karyawan.edit', [
             'user' => $user,
-            'jenis_kelamins' => JenisKelamin::where('id', '!=', $user->jenis_kelamin_id)->get(),
-            'agamas' => Agama::where('id', '!=', $user->agama_id)->get(),
-            'pendidikans' => Pendidikan::where('id', '!=', $user->pendidikan_id)->get(),
-            'jabatans' => Jabatan::where('id', '!=', $user->jabatan_id)->get(),
-            'divisis' => Divisi::where('id', '!=', $user->divisi_id)->get()
+            'jenis_kelamins' => array_diff(User::$jenis_kelamins, array($user->jenis_kelamin)),
+            'agamas' => array_diff(User::$agamas, array($user->agama)),
+            'pendidikans' => array_diff(User::$pendidikans, array($user->pendidikan)),
+            'jabatans' => array_diff(User::$jabatans, array($user->jabatan)),
+            'divisis' => array_diff(User::$divisis, array($user->divisi))
         ]);
     }
 
@@ -116,18 +110,18 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::find($id);
-        $user->jenis_kelamin_id = $request->jenis_kelamin_id;
-        $user->agama_id = $request->agama_id;
-        $user->pendidikan_id = $request->pendidikan_id;
-        $user->jabatan_id = $request->jabatan_id;
-        $user->divisi_id = $request->divisi_id;
         $user->nama = $request->nama;
         $user->nik = $request->nik;
         $user->tempat_lahir = $request->tempat_lahir;
         $user->tanggal_lahir = $request->tanggal_lahir;
+        $user->jenis_kelamin = $request->jenis_kelamin;
+        $user->agama = $request->agama;
         $user->alamat = $request->alamat;
         $user->kota = $request->kota;
         $user->provinsi = $request->provinsi;
+        $user->pendidikan = $request->pendidikan;
+        $user->divisi = $request->divisi;
+        $user->jabatan = $request->jabatan;
         $user->telepon = $request->telepon;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);

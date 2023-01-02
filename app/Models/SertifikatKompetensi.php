@@ -5,21 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PendaftaranTraining extends Model
+class SertifikatKompetensi extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
-
-    public static $status = ['Menunggu Konfirmasi', 'Disetujui', 'Ditolak'];
+    public static $status = ['Berlaku', 'Kadaluarsu'];
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function training()
+    public function sertifikasi()
     {
-        return $this->belongsTo(Training::class);
+        return $this->belongsTo(Sertifikasi::class);
     }
 }

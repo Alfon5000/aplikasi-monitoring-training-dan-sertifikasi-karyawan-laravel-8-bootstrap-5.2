@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\PendaftaranTraining;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,7 +16,12 @@ class CreatePendaftaranTrainingsTable extends Migration
     {
         Schema::create('pendaftaran_trainings', function (Blueprint $table) {
             $table->id();
-            $table->date('tanggal_pendaftaran');
+            $table->foreignId('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->restrictOnDelete()->restrictOnUpdate();
+            $table->foreignId('training_id');
+            $table->foreign('training_id')->references('id')->on('trainings')->restrictOnDelete()->restrictOnUpdate();
+            $table->date('tanggal');
+            $table->enum('status', PendaftaranTraining::$status);
             $table->timestamps();
         });
     }

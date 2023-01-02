@@ -11,6 +11,8 @@ class PelaksanaanTraining extends Model
 
     protected $guarded = [];
 
+    public static $status = ['Belum Mulai', 'Sedang Dilaksanakan', 'Sudah Selesai'];
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -19,10 +21,5 @@ class PelaksanaanTraining extends Model
     public function training()
     {
         return $this->belongsTo(Training::class);
-    }
-
-    public function statusPelaksanaan()
-    {
-        return $this->belongsTo(StatusPelaksanaan::class);
     }
 }

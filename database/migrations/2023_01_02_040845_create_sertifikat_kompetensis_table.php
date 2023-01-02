@@ -1,11 +1,11 @@
 <?php
 
-use App\Models\PendaftaranSertifikasi;
+use App\Models\SertifikatKompetensi;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePendaftaranSertifikasisTable extends Migration
+class CreateSertifikatKompetensisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,14 +14,15 @@ class CreatePendaftaranSertifikasisTable extends Migration
      */
     public function up()
     {
-        Schema::create('pendaftaran_sertifikasis', function (Blueprint $table) {
+        Schema::create('sertifikat_kompetensis', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
             $table->foreign('user_id')->references('id')->on('users')->restrictOnDelete()->restrictOnUpdate();
             $table->foreignId('sertifikasi_id');
             $table->foreign('sertifikasi_id')->references('id')->on('sertifikasis')->restrictOnDelete()->restrictOnUpdate();
-            $table->date('tanggal');
-            $table->enum('status', PendaftaranSertifikasi::$status);
+            $table->date('tanggal_terbit');
+            $table->date('tanggal_kadaluarsa');
+            $table->enum('status', SertifikatKompetensi::$status);
             $table->timestamps();
         });
     }
@@ -33,6 +34,6 @@ class CreatePendaftaranSertifikasisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pendaftaran_sertifikasis');
+        Schema::dropIfExists('sertifikat_kompetensis');
     }
 }

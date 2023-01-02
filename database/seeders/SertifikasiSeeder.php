@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Sertifikasi;
 use Illuminate\Database\Seeder;
 
 class SertifikasiSeeder extends Seeder
@@ -13,6 +14,6 @@ class SertifikasiSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Sertifikasi::factory(10)->create();
     }
 }

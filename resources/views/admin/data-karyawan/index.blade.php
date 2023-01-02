@@ -9,28 +9,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
-          @if (session()->has('tambah'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-              {{ session('tambah') }}
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-          @elseif(session()->has('perbarui'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-              {{ session('perbarui') }}
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-          @elseif(session()->has('hapus'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-              {{ session('hapus') }}
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-          @endif
+          @include('flash-message')
           <div class="card">
             <div class="card-header">
               <div class="card-tools float-left">
@@ -61,10 +40,10 @@
                     <tr>
                       <th>No.</th>
                       <th>Foto</th>
-                      <th>Nama</th>
                       <th>NIK</th>
-                      <th>Jabatan</th>
+                      <th>Nama</th>
                       <th>Divisi</th>
+                      <th>Jabatan</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
@@ -73,13 +52,13 @@
                       <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>
-                          <img src="{{ asset('storage/' . $user->foto) }}" alt="$user->nama" class="img-thumbnail"
+                          <img src="{{ asset('storage/' . $user->foto) }}" alt="{{ $user->nama }}" class="img-thumbnail"
                             style="max-height: 100px">
                         </td>
-                        <td>{{ $user->nama }}</td>
                         <td>{{ $user->nik }}</td>
-                        <td>{{ $user->jabatan->nama }}</td>
-                        <td>{{ $user->divisi->nama }}</td>
+                        <td>{{ $user->nama }}</td>
+                        <td>{{ $user->divisi }}</td>
+                        <td>{{ $user->jabatan }}</td>
                         <td>
                           <a href="/admin/data-karyawan/{{ $user->id }}" class="btn btn-info">Detail</a>
                           <a href="/admin/data-karyawan/{{ $user->id }}/edit" class="btn btn-warning">Ubah</a>

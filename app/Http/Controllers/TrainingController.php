@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Metode;
+use App\Models\Sertifikasi;
 use App\Models\Training;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 
 class TrainingController extends Controller
@@ -27,7 +27,7 @@ class TrainingController extends Controller
      */
     public function create()
     {
-        return view('admin.data-training.create', ['metodes' => Metode::all()]);
+        return view('admin.data-training.create', ['metodes' => Training::$metodes]);
     }
 
     /**
@@ -41,7 +41,7 @@ class TrainingController extends Controller
         $training = new Training;
         $training->nama = $request->nama;
         $training->bidang = $request->bidang;
-        $training->metode_id = $request->metode_id;
+        $training->metode = $request->metode;
         $training->tanggal_mulai = $request->tanggal_mulai;
         $training->tanggal_selesai = $request->tanggal_selesai;
         $training->alamat = $request->alamat;
@@ -74,7 +74,10 @@ class TrainingController extends Controller
     public function edit($id)
     {
         $training = Training::find($id);
-        return view('admin.data-training.edit', ['training' => $training, 'metodes' => Metode::where('id', '!=', $training->metode_id)->get()]);
+        return view('admin.data-training.edit', [
+            'training' => $training,
+            'metodes' => array_diff(Training::$metodes, array($training->metode))
+        ]);
     }
 
     /**
@@ -88,8 +91,8 @@ class TrainingController extends Controller
     {
         $training = Training::find($id);
         $training->nama = $request->nama;
-        $training->metode_id = $request->metode_id;
         $training->bidang = $request->bidang;
+        $training->metode = $request->metode;
         $training->tanggal_mulai = $request->tanggal_mulai;
         $training->tanggal_selesai = $request->tanggal_selesai;
         $training->alamat = $request->alamat;

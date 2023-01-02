@@ -26,10 +26,10 @@
                 </div>
                 <div class="form-group">
                   <label for="metode">Metode</label>
-                  <select class="form-control" id="metode" name="metode_id">
+                  <select class="form-control" id="metode" name="metode">
                     <option value="">-- Pilih Metode --</option>
                     @foreach ($metodes as $metode)
-                      <option value="{{ $metode->id }}">{{ $metode->nama }}</option>
+                      <option value="{{ $metode }}">{{ $metode }}</option>
                     @endforeach
                   </select>
                 </div>

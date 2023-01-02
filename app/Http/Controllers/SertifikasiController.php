@@ -26,7 +26,7 @@ class SertifikasiController extends Controller
      */
     public function create()
     {
-        return view('admin.data-sertifikasi.create', ['metodes' => Metode::all()]);
+        return view('admin.data-sertifikasi.create', ['metodes' => Sertifikasi::$metodes]);
     }
 
     /**
@@ -39,8 +39,8 @@ class SertifikasiController extends Controller
     {
         $sertifikasi = new Sertifikasi();
         $sertifikasi->nama = $request->nama;
-        $sertifikasi->metode_id = $request->metode_id;
         $sertifikasi->bidang = $request->bidang;
+        $sertifikasi->metode = $request->metode;
         $sertifikasi->tanggal_ujian = $request->tanggal_ujian;
         $sertifikasi->alamat = $request->alamat;
         $sertifikasi->kota = $request->kota;
@@ -74,7 +74,7 @@ class SertifikasiController extends Controller
         $sertifikasi = Sertifikasi::find($id);
         return view('admin.data-sertifikasi.edit', [
             'sertifikasi' => $sertifikasi,
-            'metodes' => Metode::where('id', '!=', $sertifikasi->metode_id)->get()
+            'metodes' => array_diff(Sertifikasi::$metodes, array($sertifikasi->metode))
         ]);
     }
 
@@ -89,8 +89,8 @@ class SertifikasiController extends Controller
     {
         $sertifikasi = Sertifikasi::find($id);
         $sertifikasi->nama = $request->nama;
-        $sertifikasi->metode_id = $request->metode_id;
         $sertifikasi->bidang = $request->bidang;
+        $sertifikasi->metode = $request->metode;
         $sertifikasi->tanggal_ujian = $request->tanggal_ujian;
         $sertifikasi->alamat = $request->alamat;
         $sertifikasi->kota = $request->kota;

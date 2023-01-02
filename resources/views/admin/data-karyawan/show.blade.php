@@ -39,10 +39,10 @@
               <p class="text-muted">{{ $user->tanggal_lahir }}</p>
               <hr>
               <strong>Jenis Kelamin</strong>
-              <p class="text-muted">{{ $user->jenisKelamin->nama }}</p>
+              <p class="text-muted">{{ $user->jenisKelamin }}</p>
               <hr>
               <strong>Agama</strong>
-              <p class="text-muted">{{ $user->agama->nama }}</p>
+              <p class="text-muted">{{ $user->agama }}</p>
               <hr>
               <strong>Telepon</strong>
               <p class="text-muted">{{ $user->telepon }}</p>
@@ -65,13 +65,13 @@
               <p class="text-muted">{{ $user->provinsi }}</p>
               <hr>
               <strong>Pendidikan</strong>
-              <p class="text-muted">{{ $user->pendidikan->nama }}</p>
+              <p class="text-muted">{{ $user->pendidikan }}</p>
               <hr>
               <strong>Divisi</strong>
-              <p class="text-muted">{{ $user->divisi->nama }}</p>
+              <p class="text-muted">{{ $user->divisi }}</p>
               <hr>
               <strong>Jabatan</strong>
-              <p class="text-muted">{{ $user->jabatan->nama }}</p>
+              <p class="text-muted">{{ $user->jabatan }}</p>
             </div>
           </div>
         </div>

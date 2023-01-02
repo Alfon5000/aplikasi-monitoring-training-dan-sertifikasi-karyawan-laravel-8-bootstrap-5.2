@@ -11,6 +11,8 @@ class PendaftaranSertifikasi extends Model
 
     protected $guarded = [];
 
+    public static $status = ['Menunggu Konfirmasi', 'Disetujui', 'Ditolak'];
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -19,10 +21,5 @@ class PendaftaranSertifikasi extends Model
     public function sertifikasi()
     {
         return $this->belongsTo(Sertifikasi::class);
-    }
-
-    public function statusPendaftaran()
-    {
-        return $this->belongsTo(StatusPendaftaran::class);
     }
 }

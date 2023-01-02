@@ -36,19 +36,19 @@
                 </div>
                 <div class="form-group">
                   <label for="jenis-kelamin">Jenis Kelamin</label>
-                  <select class="form-control" id="jenis-kelamin" name="jenis_kelamin_id">
+                  <select class="form-control" id="jenis-kelamin" name="jenis_kelamin">
                     <option value="">-- Pilih Jenis Kelamin --</option>
                     @foreach ($jenis_kelamins as $jenis_kelamin)
-                      <option value="{{ $jenis_kelamin->id }}">{{ $jenis_kelamin->nama }}</option>
+                      <option value="{{ $jenis_kelamin }}">{{ $jenis_kelamin }}</option>
                     @endforeach
                   </select>
                 </div>
                 <div class="form-group">
                   <label for="agama">Agama</label>
-                  <select class="form-control" id="agama" name="agama_id">
+                  <select class="form-control" id="agama" name="agama">
                     <option value="">-- Pilih Agama --</option>
                     @foreach ($agamas as $agama)
-                      <option value="{{ $agama->id }}">{{ $agama->nama }}</option>
+                      <option value="{{ $agama }}">{{ $agama }}</option>
                     @endforeach
                   </select>
                 </div>
@@ -66,28 +66,28 @@
                 </div>
                 <div class="form-group">
                   <label for="pendidikan">Pendidikan</label>
-                  <select class="form-control" id="pendidikan" name="pendidikan_id">
+                  <select class="form-control" id="pendidikan" name="pendidikan">
                     <option value="">-- Pilih Pendidikan --</option>
                     @foreach ($pendidikans as $pendidikan)
-                      <option value="{{ $pendidikan->id }}">{{ $pendidikan->nama }}</option>
-                    @endforeach
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="jabatan">Jabatan</label>
-                  <select class="form-control" id="jabatan" name="jabatan_id">
-                    <option value="">-- Pilih Jabatan --</option>
-                    @foreach ($jabatans as $jabatan)
-                      <option value="{{ $jabatan->id }}">{{ $jabatan->nama }}</option>
+                      <option value="{{ $pendidikan }}">{{ $pendidikan }}</option>
                     @endforeach
                   </select>
                 </div>
                 <div class="form-group">
                   <label for="divisi">Divisi</label>
-                  <select class="form-control" id="divisi" name="divisi_id">
+                  <select class="form-control" id="divisi" name="divisi">
                     <option value="">-- Pilih Divisi --</option>
                     @foreach ($divisis as $divisi)
-                      <option value="{{ $divisi->id }}">{{ $divisi->nama }}</option>
+                      <option value="{{ $divisi }}">{{ $divisi }}</option>
+                    @endforeach
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="jabatan">Jabatan</label>
+                  <select class="form-control" id="jabatan" name="jabatan">
+                    <option value="">-- Pilih Jabatan --</option>
+                    @foreach ($jabatans as $jabatan)
+                      <option value="{{ $jabatan }}">{{ $jabatan }}</option>
                     @endforeach
                   </select>
                 </div>

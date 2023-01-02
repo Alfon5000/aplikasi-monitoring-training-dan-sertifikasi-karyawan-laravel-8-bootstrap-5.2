@@ -5,13 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PendaftaranTraining extends Model
+class SertifikatTraining extends Model
 {
     use HasFactory;
-
-    protected $guarded = [];
-
-    public static $status = ['Menunggu Konfirmasi', 'Disetujui', 'Ditolak'];
 
     public function user()
     {

@@ -11,6 +11,10 @@ class UjianSertifikasi extends Model
 
     protected $guarded = [];
 
+    public static $status = ['Belum Mulai', 'Sedang Dilaksanakan', 'Sudah Selesai'];
+
+    public static $keterangans = ['Belum Ujian', 'Lulus', 'Tidak Lulus'];
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -19,10 +23,5 @@ class UjianSertifikasi extends Model
     public function sertifikasi()
     {
         return $this->belongsTo(Sertifikasi::class);
-    }
-
-    public function statusPelaksanaan()
-    {
-        return $this->belongsTo(StatusPelaksanaan::class);
     }
 }

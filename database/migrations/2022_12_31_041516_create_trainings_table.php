@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Training;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -17,6 +18,7 @@ class CreateTrainingsTable extends Migration
             $table->id();
             $table->string('nama');
             $table->string('bidang');
+            $table->enum('metode', Training::$metodes);
             $table->date('tanggal_mulai');
             $table->date('tanggal_selesai');
             $table->string('alamat');

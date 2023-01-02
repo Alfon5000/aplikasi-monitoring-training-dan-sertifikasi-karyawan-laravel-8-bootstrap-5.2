@@ -38,35 +38,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function role()
-    {
-        return $this->belongsTo(Role::class);
-    }
-
-    public function jenisKelamin()
-    {
-        return $this->belongsTo(JenisKelamin::class);
-    }
-
-    public function agama()
-    {
-        return $this->belongsTo(Agama::class);
-    }
-
-    public function pendidikan()
-    {
-        return $this->belongsTo(Pendidikan::class);
-    }
-
-    public function jabatan()
-    {
-        return $this->belongsTo(Jabatan::class);
-    }
-
-    public function divisi()
-    {
-        return $this->belongsTo(Divisi::class);
-    }
+    public static $jenis_kelamins = ['Pria', 'Wanita'];
+    public static $agamas = ['Islam', 'Kristen', 'Katolik', 'Hindu', 'Buddha', 'Konghucu'];
+    public static $pendidikans = ['SMA', 'SMK', 'D3', 'S1', 'S2', 'S3'];
+    public static $divisis = ['Keuangan', 'Pemasaran', 'Penjualan', 'Personalia', 'Teknologi Informasi'];
+    public static $jabatans = ['Staff', 'Supervisor', 'Asisten Manajer', 'Manajer', 'Direktur'];
+    public static $roles = ['Admin', 'Karyawan'];
 
     public function pendaftaranTraining()
     {
@@ -86,5 +63,15 @@ class User extends Authenticatable
     public function ujianSertifikasi()
     {
         return $this->hasMany(UjianSertifikasi::class);
+    }
+
+    public function sertifikatTraining()
+    {
+        return $this->hasMany(SertifikatTraining::class);
+    }
+
+    public function sertifikatKompetensi()
+    {
+        return $this->hasMany(SertifikatKompetensi::class);
     }
 }
