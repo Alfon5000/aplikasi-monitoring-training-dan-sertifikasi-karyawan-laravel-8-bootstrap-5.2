@@ -46,8 +46,10 @@ Route::prefix('admin')->group(function () {
 });
 
 Route::get('/', [HomeController::class, 'index']);
-Route::get('/detail/training/{id}', [HomeController::class, 'trainingDetail']);
-Route::get('/detail/sertifikasi{id}', [HomeController::class, 'sertifikasiDetail']);
+Route::get('/training/{id}', [DetailController::class, 'detailTraining']);
+Route::get('/sertifikasi/{id}', [DetailController::class, 'detailSertifikasi']);
+Route::post('/training/{id}', [DetailController::class, 'registerTraining']);
+Route::post('/sertifikasi/{id}', [DetailController::class, 'registerSertifikasi']);
 
 Route::get('/pendaftaran/training', [HomeController::class, 'index']);
 Route::get('/pendaftaran/sertifikasi', [HomeController::class, 'index']);

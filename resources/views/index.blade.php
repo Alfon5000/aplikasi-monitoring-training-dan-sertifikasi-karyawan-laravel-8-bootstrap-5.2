@@ -6,6 +6,15 @@
 
 @section('content')
   <div class="container">
+    <div class="my-3">
+      @if (session()->has('daftar'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          {{ session('daftar') }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      @endif
+    </div>
+    @include('layouts.search')
     <div class="row mb-5">
       <h2>Daftar Training</h2>
       <div class="row row-cols-1 row-cols-md-4 g-4">
@@ -21,15 +30,23 @@
                   style="height: 120px; width: 200px;">
               </div>
               <div class="card-body">
-                <h5 class="card-title fw-bold">Bidang</h5>
-                <p class="card-text">{{ $training->bidang }}</p>
-                <h5 class="card-title fw-bold">Metode</h5>
-                <p class="card-text">{{ $training->metode }}</p>
-                <h5 class="card-title fw-bold">Kuota</h5>
-                <p class="card-text">{{ $training->kuota }}</p>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                    <h5 class="card-title fw-bold">Bidang</h5>
+                    <p class="card-text">{{ $training->bidang }}</p>
+                  </li>
+                  <li class="list-group-item">
+                    <h5 class="card-title fw-bold">Metode</h5>
+                    <p class="card-text">{{ $training->metode }}</p>
+                  </li>
+                  <li class="list-group-item">
+                    <h5 class="card-title fw-bold">Kuota</h5>
+                    <p class="card-text">{{ $training->kuota }}</p>
+                  </li>
+                </ul>
               </div>
               <div class="card-footer text-center">
-                <a href="/detail/training/{{ $training->id }}" class="btn btn-primary w-100">Detail</a>
+                <a href="/training/{{ $training->id }}" class="btn btn-primary w-100">Detail</a>
               </div>
             </div>
           </div>
@@ -55,15 +72,23 @@
                   style="height: 120px; width: 200px;">
               </div>
               <div class="card-body">
-                <h5 class="card-title fw-bold">Bidang</h5>
-                <p class="card-text">{{ $sertifikasi->bidang }}</p>
-                <h5 class="card-title fw-bold">Metode</h5>
-                <p class="card-text">{{ $sertifikasi->metode }}</p>
-                <h5 class="card-title fw-bold">Kuota</h5>
-                <p class="card-text">{{ $sertifikasi->kuota }}</p>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                    <h5 class="card-title fw-bold">Bidang</h5>
+                    <p class="card-text">{{ $sertifikasi->bidang }}</p>
+                  </li>
+                  <li class="list-group-item">
+                    <h5 class="card-title fw-bold">Metode</h5>
+                    <p class="card-text">{{ $sertifikasi->metode }}</p>
+                  </li>
+                  <li class="list-group-item">
+                    <h5 class="card-title fw-bold">Kuota</h5>
+                    <p class="card-text">{{ $sertifikasi->kuota }}</p>
+                  </li>
+                </ul>
               </div>
               <div class="card-footer text-center">
-                <a href="/detail/sertifikasi/{{ $sertifikasi->id }}" class="btn btn-primary w-100">Detail</a>
+                <a href="/sertifikasi/{{ $sertifikasi->id }}" class="btn btn-primary w-100">Detail</a>
               </div>
             </div>
           </div>

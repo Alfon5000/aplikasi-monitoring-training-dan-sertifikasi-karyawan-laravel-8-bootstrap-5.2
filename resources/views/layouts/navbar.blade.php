@@ -1,7 +1,7 @@
 <nav class="navbar navbar-dark bg-primary navbar-expand-lg">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">
-      <img src="logo.png" alt="Logo" style="max-height: 50px;">
+      <img src="{{ asset('logo.png') }}" alt="Logo" style="max-height: 50px;">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
       aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">

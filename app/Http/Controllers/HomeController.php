@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Training;
 use App\Models\Sertifikasi;
-use Illuminate\Http\Request;
+use App\Models\PendaftaranTraining;
+use App\Models\PendaftaranSertifikasi;
 
 class HomeController extends Controller
 {
@@ -37,17 +38,5 @@ class HomeController extends Controller
             'trainings' => $trainings->paginate(4),
             'sertifikasis' => $sertifikasis->paginate(4)
         ]);
-    }
-
-    public function trainingDetail($id)
-    {
-        $training = Training::find($id);
-        return view('detail.training', ['training' => $training]);
-    }
-
-    public function sertifikasiDetail($id)
-    {
-        $sertifikasi = Sertifikasi::find($id);
-        return view('detail.sertifikasi', ['sertifikasi' => $sertifikasi]);
     }
 }
