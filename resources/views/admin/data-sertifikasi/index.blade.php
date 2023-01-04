@@ -9,7 +9,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
-          @include('flash-message')
+          @include('admin.layouts.flash-message')
           <div class="card">
             <div class="card-header">
               <div class="card-tools float-left">

@@ -17,7 +17,7 @@ class DashboardController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return view('admin.dashboard.index', [
+        return view('admin.index', [
             'total_karyawan' => User::where('role', 'Karyawan')->count(),
             'total_training' => Training::all()->count(),
             'total_sertifikasi' => Sertifikasi::all()->count()

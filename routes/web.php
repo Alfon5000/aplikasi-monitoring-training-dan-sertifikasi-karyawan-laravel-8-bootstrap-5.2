@@ -23,12 +23,8 @@ use App\Http\Controllers\PendaftaranSertifikasiController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::prefix('admin')->group(function () {
-    Route::get('/dashboard', DashboardController::class);
+    Route::get('/', DashboardController::class);
 
     Route::resource('/data-karyawan', UserController::class);
 
@@ -49,6 +45,15 @@ Route::prefix('admin')->group(function () {
     Route::get('/ujian-sertifikasi', [UjianSertifikasiController::class, 'index']);
 });
 
-Auth::routes();
+Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/pendaftaran/training', [HomeController::class, 'index']);
+Route::get('/pendaftaran/sertifikasi', [HomeController::class, 'index']);
+
+Route::get('/pelaksanaan/training', [HomeController::class, 'index']);
+Route::get('/pelaksanaan/sertifikasi', [HomeController::class, 'index']);
+
+Route::get('/sertifikat/training', [HomeController::class, 'index']);
+Route::get('/sertifikat/sertifikasi', [HomeController::class, 'index']);
+
+Auth::routes();

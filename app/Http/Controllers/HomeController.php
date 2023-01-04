@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Training;
+use App\Models\Sertifikasi;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -11,10 +13,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Show the application dashboard.
@@ -23,6 +25,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $trainings = Training::latest();
+        $sertifikasis = Sertifikasi::latest();
+
+        if (request('search')) {
+            $trainings->where('nama', 'like', '%' . request('search') . '%');
+            $sertifikasis->where('nama', 'like', '%' . request('search') . '%');
+        }
+
+        return view('index', [
+            'trainings' => $trainings->paginate(4),
+            'sertifikasis' => $sertifikasis->paginate(4)
+        ]);
     }
 }
