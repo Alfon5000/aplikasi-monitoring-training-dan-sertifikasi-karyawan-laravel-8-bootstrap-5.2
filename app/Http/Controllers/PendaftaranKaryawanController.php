@@ -10,13 +10,21 @@ class PendaftaranKaryawanController extends Controller
 {
     public function indexTraining()
     {
-        $pendaftaranTraining = PendaftaranTraining::where('user_id', 2);
-        return view('pendaftaran.training', ['pendaftaranTraining' => $pendaftaranTraining]);
+        $pendaftaranTrainings = PendaftaranTraining::where('user_id', 2)->latest()->paginate(5);
+        $count = PendaftaranTraining::all()->count();
+        return view('pendaftaran.training', [
+            'pendaftaranTrainings' => $pendaftaranTrainings,
+            'count' => $count
+        ]);
     }
 
     public function indexSertifikasi()
     {
-        $pendaftaranSertifikasi = PendaftaranSertifikasi::where('user_id', 2);
-        return view('pendaftaran.sertifikasi', ['pendaftaranSertifikasi' => $pendaftaranSertifikasi]);
+        $pendaftaranSertifikasis = PendaftaranSertifikasi::where('user_id', 2)->latest()->paginate(5);
+        $count = PendaftaranSertifikasi::all()->count();
+        return view('pendaftaran.sertifikasi', [
+            'pendaftaranSertifikasis' => $pendaftaranSertifikasis,
+            'count' => $count
+        ]);
     }
 }

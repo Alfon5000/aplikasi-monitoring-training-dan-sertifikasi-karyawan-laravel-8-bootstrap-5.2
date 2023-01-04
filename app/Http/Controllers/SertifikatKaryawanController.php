@@ -10,13 +10,13 @@ class SertifikatKaryawanController extends Controller
 {
     public function indexTraining()
     {
-        $sertifikatTraining = SertifikatTraining::where('user_id', 2);
-        return view('sertifikat.training', ['pendaftaranTraining' => $sertifikatTraining]);
+        $sertifikatTrainings = SertifikatTraining::where('user_id', 2)->latest()->paginate(5);
+        return view('sertifikat.training', ['sertifikatTrainings' => $sertifikatTrainings]);
     }
 
     public function indexSertifikasi()
     {
-        $sertifikatKompetensi = SertifikatKompetensi::where('user_id', 2);
-        return view('sertifikat.sertifikasi', ['pendaftaranSertifikasi' => $sertifikatKompetensi]);
+        $sertifikatKompetensis = SertifikatKompetensi::where('user_id', 2)->latest()->paginate(5);
+        return view('sertifikat.sertifikasi', ['sertifikatKompetensis' => $sertifikatKompetensis]);
     }
 }

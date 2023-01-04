@@ -12,7 +12,7 @@
 <body>
   @include('layouts.navbar')
   @yield('content')
-  @include('layouts.footer')
+  {{-- @include('layouts.footer') --}}
   <script src="{{ asset('js/app.js') }}"></script>
 </body>
 
