@@ -4,11 +4,15 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DetailController;
 use App\Http\Controllers\TrainingController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SertifikasiController;
 use App\Http\Controllers\UjianSertifikasiController;
+use App\Http\Controllers\SertifikatKaryawanController;
+use App\Http\Controllers\PelaksanaanKaryawanController;
 use App\Http\Controllers\PelaksanaanTrainingController;
+use App\Http\Controllers\PendaftaranKaryawanController;
 use App\Http\Controllers\PendaftaranTrainingController;
 use App\Http\Controllers\PendaftaranSertifikasiController;
 
@@ -46,18 +50,19 @@ Route::prefix('admin')->group(function () {
 });
 
 Route::get('/', [HomeController::class, 'index']);
+
 Route::get('/training/{id}', [DetailController::class, 'detailTraining']);
 Route::get('/sertifikasi/{id}', [DetailController::class, 'detailSertifikasi']);
 Route::post('/training/{id}', [DetailController::class, 'registerTraining']);
 Route::post('/sertifikasi/{id}', [DetailController::class, 'registerSertifikasi']);
 
-Route::get('/pendaftaran/training', [HomeController::class, 'index']);
-Route::get('/pendaftaran/sertifikasi', [HomeController::class, 'index']);
+Route::get('/pendaftaran/training', [PendaftaranKaryawanController::class, 'indexTraining']);
+Route::get('/pendaftaran/sertifikasi', [PendaftaranKaryawanController::class, 'indexSertifikasi']);
 
-Route::get('/pelaksanaan/training', [HomeController::class, 'index']);
-Route::get('/pelaksanaan/sertifikasi', [HomeController::class, 'index']);
+Route::get('/pelaksanaan/training', [PelaksanaanKaryawanController::class, 'indexTraining']);
+Route::get('/pelaksanaan/sertifikasi', [PelaksanaanKaryawanController::class, 'indexSertifikasi']);
 
-Route::get('/sertifikat/training', [HomeController::class, 'index']);
-Route::get('/sertifikat/sertifikasi', [HomeController::class, 'index']);
+Route::get('/sertifikat/training', [SertifikatKaryawanController::class, 'indexTraining']);
+Route::get('/sertifikat/sertifikasi', [SertifikatKaryawanController::class, 'indexSertifikasi']);
 
 Auth::routes();

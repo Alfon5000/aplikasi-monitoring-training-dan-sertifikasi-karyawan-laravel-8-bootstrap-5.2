@@ -10,7 +10,7 @@
     <div class="collapse navbar-collapse" id="navbarScroll">
       <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
         <li class="nav-item">
-          <a class="nav-link @yield('home')" aria-current="page" href="/">Beranda</a>
+          <a class="nav-link @yield('beranda')" aria-current="page" href="/">Beranda</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle @yield('pendaftaran')" href="#" role="button" data-bs-toggle="dropdown"
@@ -18,8 +18,8 @@
             Pendaftaran
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/pendaftaran/training">Training</a></li>
-            <li><a class="dropdown-item" href="/pendaftaran/sertifikasi">Sertifikasi</a></li>
+            <li><a class="dropdown-item @yield('pendaftaran-training')" href="/pendaftaran/training">Training</a></li>
+            <li><a class="dropdown-item @yield('pendaftaran-sertifikasi')" href="/pendaftaran/sertifikasi">Sertifikasi</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
@@ -28,8 +28,8 @@
             Pelaksanaan
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/pelaksanaan/training">Training</a></li>
-            <li><a class="dropdown-item" href="/pelaksanaan/sertifikat">Sertifikasi</a></li>
+            <li><a class="dropdown-item @yield('pelaksanaan-training')" href="/pelaksanaan/training">Training</a></li>
+            <li><a class="dropdown-item @yield('pelaksanaan-sertifikasi')" href="/pelaksanaan/sertifikasi">Sertifikasi</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
@@ -38,8 +38,8 @@
             Sertifikat
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/sertifikat/training">Training</a></li>
-            <li><a class="dropdown-item" href="/sertifikat/sertifikasi">Sertifikasi</a></li>
+            <li><a class="dropdown-item @yield('sertifikat-training')" href="/sertifikat/training">Training</a></li>
+            <li><a class="dropdown-item @yield('sertifikat-sertifikasi')" href="/sertifikat/sertifikasi">Sertifikasi</a></li>
           </ul>
         </li>
       </ul>

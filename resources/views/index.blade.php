@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
-@section('title', 'Home')
+@section('title', 'Beranda')
 
-@section('home', 'active')
+@section('beranda', 'active')
 
 @section('content')
   <div class="container">
@@ -57,7 +57,7 @@
       </div>
     </div>
     <hr>
-    <div class="row mb-5">
+    <div class="row my-5">
       <h2>Daftar Sertifikasi</h2>
       <div class="row row-cols-1 row-cols-md-4 g-4">
         @foreach ($sertifikasis as $sertifikasi)
