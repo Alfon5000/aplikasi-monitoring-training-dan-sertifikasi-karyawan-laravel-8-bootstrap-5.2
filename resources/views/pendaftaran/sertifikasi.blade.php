@@ -23,7 +23,7 @@
           @foreach ($pendaftaranSertifikasis as $pendaftaranSertifikasi)
             <tr>
               <td>{{ $loop->iteration }}</td>
-              <td>{{ $pendaftaranSertifikasi->training->nama }}</td>
+              <td>{{ $pendaftaranSertifikasi->sertifikasi->nama }}</td>
               <td>{{ $pendaftaranSertifikasi->tanggal }}</td>
               <td>{{ $pendaftaranSertifikasi->status }}</td>
             </tr>

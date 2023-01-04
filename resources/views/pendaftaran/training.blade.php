@@ -15,8 +15,7 @@
           <tr>
             <th scope="col">No.</th>
             <th scope="col">Nama Training</th>
-            <th scope="col">Tanggal Pendaftaran</th>
-            <th scope="col">Status Pendaftaran</th>
+            <th scope="col">Status Pelaksanaan</th>
           </tr>
         </thead>
         <tbody>
@@ -24,7 +23,6 @@
             <tr>
               <td>{{ $loop->iteration }}</td>
               <td>{{ $pendaftaranTraining->training->nama }}</td>
-              <td>{{ $pendaftaranTraining->tanggal }}</td>
               <td>{{ $pendaftaranTraining->status }}</td>
             </tr>
           @endforeach

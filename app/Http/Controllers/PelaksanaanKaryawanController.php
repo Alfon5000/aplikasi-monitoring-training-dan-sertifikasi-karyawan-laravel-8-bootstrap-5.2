@@ -11,12 +11,20 @@ class PelaksanaanKaryawanController extends Controller
     public function indexTraining()
     {
         $pelaksanaanTrainings = PelaksanaanTraining::where('user_id', 2)->latest()->paginate(5);
-        return view('pelaksanaan.training', ['pelaksanaanTrainings' => $pelaksanaanTrainings]);
+        $count = PelaksanaanTraining::all()->count();
+        return view('pelaksanaan.training', [
+            'pelaksanaanTrainings' => $pelaksanaanTrainings,
+            'count' => $count
+        ]);
     }
 
     public function indexSertifikasi()
     {
         $ujianSertifikasis = UjianSertifikasi::where('user_id', 2)->latest()->paginate(5);
-        return view('pelaksanaan.sertifikasi', ['ujianSertifikasis' => $ujianSertifikasis]);
+        $count = UjianSertifikasi::all()->count();
+        return view('pelaksanaan.sertifikasi', [
+            'ujianSertifikasis' => $ujianSertifikasis,
+            'count' => $count
+        ]);
     }
 }
