@@ -29,7 +29,7 @@
                 <p class="card-text">{{ $training->kuota }}</p>
               </div>
               <div class="card-footer text-center">
-                <a href="/training/{{ $training->id }}" class="btn btn-primary w-100">Detail</a>
+                <a href="/detail/training/{{ $training->id }}" class="btn btn-primary w-100">Detail</a>
               </div>
             </div>
           </div>
@@ -63,7 +63,7 @@
                 <p class="card-text">{{ $sertifikasi->kuota }}</p>
               </div>
               <div class="card-footer text-center">
-                <a href="/sertifikasi/{{ $sertifikasi->id }}" class="btn btn-primary w-100">Detail</a>
+                <a href="/detail/sertifikasi/{{ $sertifikasi->id }}" class="btn btn-primary w-100">Detail</a>
               </div>
             </div>
           </div>

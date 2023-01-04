@@ -38,4 +38,16 @@ class HomeController extends Controller
             'sertifikasis' => $sertifikasis->paginate(4)
         ]);
     }
+
+    public function trainingDetail($id)
+    {
+        $training = Training::find($id);
+        return view('detail.training', ['training' => $training]);
+    }
+
+    public function sertifikasiDetail($id)
+    {
+        $sertifikasi = Sertifikasi::find($id);
+        return view('detail.sertifikasi', ['sertifikasi' => $sertifikasi]);
+    }
 }
