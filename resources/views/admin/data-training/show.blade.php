@@ -12,8 +12,8 @@
           <div class="card card-primary">
             <div class="card-body">
               <div class="mb-5 text-center">
-                <img src="{{ asset('storage/' . $training->gambar) }}" alt="{{ $training->nama }}" class="img-thumbnail"
-                  style="height: 275px;">
+                <img src="{{ asset('storage/gambar-training/' . $training->gambar) }}" alt="{{ $training->nama }}"
+                  class="img-thumbnail" style="height: 275px;">
               </div>
               <strong>Nama</strong>
               <p class="text-muted">
