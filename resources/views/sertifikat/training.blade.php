@@ -14,23 +14,21 @@
         <thead class="bg-primary text-light">
           <tr>
             <th scope="col">No.</th>
-            <th scope="col">Nama Sertifikasi</th>
-            <th scope="col">Tanggal Pendaftaran</th>
-            <th scope="col">Status Pendaftaran</th>
+            <th scope="col">Nama Training</th>
+            <th scope="col">Tanggal Terbit</th>
           </tr>
         </thead>
         <tbody>
-          @foreach ($pendaftaranSertifikasis as $pendaftaranSertifikasi)
+          @foreach ($sertifikatTrainings as $sertifikatTraining)
             <tr>
               <td>{{ $loop->iteration }}</td>
-              <td>{{ $pendaftaranSertifikasi->training->nama }}</td>
-              <td>{{ $pendaftaranSertifikasi->tanggal }}</td>
-              <td>{{ $pendaftaranSertifikasi->status }}</td>
+              <td>{{ $sertifikatTraining->training->nama }}</td>
+              <td>{{ $sertifikatTraining->tanggal_terbit }}</td>
             </tr>
           @endforeach
         </tbody>
         <tfoot>
-          {{ $pendaftaranSertifikasis->links() }}
+          {{ $sertifikatTrainings->links() }}
         </tfoot>
       </table>
     @else

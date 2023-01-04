@@ -12,6 +12,11 @@
           {{ session('daftar') }}
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
+      @elseif (session()->has('login'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          {{ session('login') }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
       @endif
     </div>
     @include('layouts.search')
@@ -25,9 +30,8 @@
                 <h5 class="card-title mt-2">{{ $training->nama }}</h5>
               </div>
               <div class="text-center">
-                <img src="{{ asset('storage/gambar-training/' . $training->gambar) }}"
-                  class="card-img-top img-thumbnail rounded mt-3" alt="{{ $training->nama }}"
-                  style="height: 120px; width: 200px;">
+                <img src="{{ asset('storage/' . $training->gambar) }}" class="card-img-top img-thumbnail rounded mt-3"
+                  alt="{{ $training->nama }}" style="height: 120px; width: 200px;">
               </div>
               <div class="card-body">
                 <ul class="list-group list-group-flush">
@@ -67,9 +71,8 @@
                 <h5 class="card-title mt-2">{{ $sertifikasi->nama }}</h5>
               </div>
               <div class="text-center">
-                <img src="{{ asset('storage/gambar-sertifikasi/' . $sertifikasi->gambar) }}"
-                  class="card-img-top img-thumbnail rounded mt-3" alt="{{ $sertifikasi->nama }}"
-                  style="height: 120px; width: 200px;">
+                <img src="{{ asset('storage/' . $sertifikasi->gambar) }}" class="card-img-top img-thumbnail rounded mt-3"
+                  alt="{{ $sertifikasi->nama }}" style="height: 120px; width: 200px;">
               </div>
               <div class="card-body">
                 <ul class="list-group list-group-flush">

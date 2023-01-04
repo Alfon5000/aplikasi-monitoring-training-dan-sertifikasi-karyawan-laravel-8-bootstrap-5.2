@@ -52,8 +52,8 @@
                       <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>
-                          <img src="{{ asset('storage/foto-user/' . $user->foto) }}" alt="{{ $user->nama }}"
-                            class="img-thumbnail" style="max-height: 100px">
+                          <img src="{{ asset('storage/' . $user->foto) }}" alt="{{ $user->nama }}" class="img-thumbnail"
+                            style="max-height: 100px">
                         </td>
                         <td>{{ $user->nik }}</td>
                         <td>{{ $user->nama }}</td>

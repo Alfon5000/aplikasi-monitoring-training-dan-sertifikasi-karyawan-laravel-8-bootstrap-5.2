@@ -29,7 +29,7 @@ class SertifikasiSeeder extends Seeder
                 'provinsi' => $faker->state(),
                 'kuota' => Arr::random([10, 20, 30, 40, 50]),
                 'deskripsi' => 'Menjadi Back End Developer',
-                'gambar' => 'backend.png'
+                'gambar' => 'gambar-sertifikasi/backend.png'
             ],
             [
                 'nama' => 'Machine Learning Engineer',
@@ -41,7 +41,7 @@ class SertifikasiSeeder extends Seeder
                 'provinsi' => $faker->state(),
                 'kuota' => Arr::random([10, 20, 30, 40, 50]),
                 'deskripsi' => 'Menjadi Machine Learning Engineer',
-                'gambar' => 'ml.png'
+                'gambar' => 'gambar-sertifikasi/ml.png'
             ],
             [
                 'nama' => 'Fullstack Web Developer',
@@ -53,7 +53,7 @@ class SertifikasiSeeder extends Seeder
                 'provinsi' => $faker->state(),
                 'kuota' => Arr::random([10, 20, 30, 40, 50]),
                 'deskripsi' => 'Menjadi Fullstack Web Developer',
-                'gambar' => 'fullstack.png'
+                'gambar' => 'gambar-sertifikasi/fullstack.png'
             ],
             [
                 'nama' => 'Android Developer',
@@ -65,7 +65,7 @@ class SertifikasiSeeder extends Seeder
                 'provinsi' => $faker->state(),
                 'kuota' => Arr::random([10, 20, 30, 40, 50]),
                 'deskripsi' => 'Menjadi Android Developer',
-                'gambar' => 'android.png'
+                'gambar' => 'gambar-sertifikasi/android.png'
             ],
             [
                 'nama' => 'Front End Developer',
@@ -77,7 +77,7 @@ class SertifikasiSeeder extends Seeder
                 'provinsi' => $faker->state(),
                 'kuota' => Arr::random([10, 20, 30, 40, 50]),
                 'deskripsi' => 'Menjadi Front End Developer',
-                'gambar' => 'frontend.png'
+                'gambar' => 'gambar-sertifikasi/frontend.png'
             ],
             [
                 'nama' => 'DevOps Engineer',
@@ -89,7 +89,7 @@ class SertifikasiSeeder extends Seeder
                 'provinsi' => $faker->state(),
                 'kuota' => Arr::random([10, 20, 30, 40, 50]),
                 'deskripsi' => 'Menjadi DevOps Engineer',
-                'gambar' => 'devops.png'
+                'gambar' => 'gambar-sertifikasi/devops.png'
             ],
         ];
 

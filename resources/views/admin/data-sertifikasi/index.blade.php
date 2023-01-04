@@ -51,8 +51,8 @@
                       <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>
-                          <img src="{{ asset('storage/gambar-sertifikasi/' . $sertifikasi->gambar) }}"
-                            alt="{{ $sertifikasi->nama }}" class="img-thumbnail" style="max-height: 100px">
+                          <img src="{{ asset('storage/' . $sertifikasi->gambar) }}" alt="{{ $sertifikasi->nama }}"
+                            class="img-thumbnail" style="max-height: 100px">
                         </td>
                         <td>{{ $sertifikasi->nama }}</td>
                         <td>{{ $sertifikasi->bidang }}</td>

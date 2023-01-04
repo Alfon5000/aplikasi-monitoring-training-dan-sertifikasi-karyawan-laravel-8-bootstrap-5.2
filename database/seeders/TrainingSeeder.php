@@ -30,7 +30,7 @@ class TrainingSeeder extends Seeder
                 'provinsi' => $faker->state(),
                 'kuota' => Arr::random([10, 20, 30, 40, 50]),
                 'deskripsi' => 'Belajar Dasar Bahasa Pemrograman PHP',
-                'gambar' => 'php.png'
+                'gambar' => 'gambar-training/php.png'
             ],
             [
                 'nama' => 'Belajar Java Dasar',
@@ -43,7 +43,7 @@ class TrainingSeeder extends Seeder
                 'provinsi' => $faker->state(),
                 'kuota' => Arr::random([10, 20, 30, 40, 50]),
                 'deskripsi' => 'Belajar Dasar Bahasa Pemrograman PHP',
-                'gambar' => 'java.png'
+                'gambar' => 'gambar-training/java.png'
             ],
             [
                 'nama' => 'Belajar JavaScript Dasar',
@@ -56,7 +56,7 @@ class TrainingSeeder extends Seeder
                 'provinsi' => $faker->state(),
                 'kuota' => Arr::random([10, 20, 30, 40, 50]),
                 'deskripsi' => 'Belajar Dasar Bahasa Pemrograman JavaScript',
-                'gambar' => 'js.png'
+                'gambar' => 'gambar-training/js.png'
             ],
             [
                 'nama' => 'Belajar MySQL Dasar',
@@ -69,7 +69,7 @@ class TrainingSeeder extends Seeder
                 'provinsi' => $faker->state(),
                 'kuota' => Arr::random([10, 20, 30, 40, 50]),
                 'deskripsi' => 'Belajar Dasar Database Management System MySQL',
-                'gambar' => 'mysql.png'
+                'gambar' => 'gambar-training/mysql.png'
             ],
             [
                 'nama' => 'Belajar Golang Dasar',
@@ -82,7 +82,7 @@ class TrainingSeeder extends Seeder
                 'provinsi' => $faker->state(),
                 'kuota' => Arr::random([10, 20, 30, 40, 50]),
                 'deskripsi' => 'Belajar Dasar Bahasa Pemrograman Golang',
-                'gambar' => 'golang.png'
+                'gambar' => 'gambar-training/golang.png'
             ],
             [
                 'nama' => 'Belajar Python Dasar',
@@ -95,7 +95,7 @@ class TrainingSeeder extends Seeder
                 'provinsi' => $faker->state(),
                 'kuota' => Arr::random([10, 20, 30, 40, 50]),
                 'deskripsi' => 'Belajar Dasar Bahasa Pemrograman Python',
-                'gambar' => 'python.png'
+                'gambar' => 'gambar-training/python.png'
             ]
         ];
 

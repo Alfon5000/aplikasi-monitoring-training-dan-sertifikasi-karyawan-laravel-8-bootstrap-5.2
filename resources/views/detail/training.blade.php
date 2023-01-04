@@ -6,8 +6,8 @@
   <div class="container my-5">
     <div class="card">
       <div class="card-header d-flex justify-content-center">
-        <img src="{{ asset('storage/gambar-training/' . $training->gambar) }}" class="card-img-top my-3"
-          alt="{{ $training->nama }}" style="max-height: 600px; max-width: 1200px;">
+        <img src="{{ asset('storage/' . $training->gambar) }}" class="card-img-top my-3" alt="{{ $training->nama }}"
+          style="max-height: 600px; max-width: 1200px;">
       </div>
       <div class="card-body">
         <h5 class="card-title fw-bold">{{ $training->nama }}</h5>

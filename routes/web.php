@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -65,4 +67,10 @@ Route::get('/pelaksanaan/sertifikasi', [PelaksanaanKaryawanController::class, 'i
 Route::get('/sertifikat/training', [SertifikatKaryawanController::class, 'indexTraining']);
 Route::get('/sertifikat/sertifikasi', [SertifikatKaryawanController::class, 'indexSertifikasi']);
 
-Auth::routes();
+Route::get('/login', [LoginController::class, 'index'])->middleware('guest');
+Route::post('/login', [LoginController::class, 'validation']);
+
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+Route::post('/register', [RegisterController::class, 'store']);
+
+// Auth::routes();
