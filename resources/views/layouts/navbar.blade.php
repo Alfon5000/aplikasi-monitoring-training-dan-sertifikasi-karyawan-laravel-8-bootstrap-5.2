@@ -47,12 +47,17 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">
-            <span>Alfonso Lai</span>
+            <span>Karyawan</span>
             {{-- <i class="bi bi-person-circle"></i> --}}
           </a>
           <ul class="dropdown-menu dropdown-menu-end">
             <li><a class="dropdown-item" href="/profil">Profil</a></li>
-            <li><a class="dropdown-item" href="/login">Keluar</a></li>
+            <li>
+              <form action="/logout" method="POST">
+                @csrf
+                <button type="submit" class="dropdown-item">Keluar</button>
+              </form>
+            </li>
           </ul>
         </li>
       </ul>

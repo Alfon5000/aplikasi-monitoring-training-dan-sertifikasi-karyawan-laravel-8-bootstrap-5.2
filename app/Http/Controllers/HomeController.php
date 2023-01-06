@@ -35,8 +35,8 @@ class HomeController extends Controller
         }
 
         return view('index', [
-            'trainings' => $trainings->paginate(4),
-            'sertifikasis' => $sertifikasis->paginate(4)
+            'trainings' => $trainings->paginate(2),
+            'sertifikasis' => $sertifikasis->paginate(2)
         ]);
     }
 }

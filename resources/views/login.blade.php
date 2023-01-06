@@ -11,7 +11,7 @@
 
 <body class="text-center">
   <main class="form-signin w-25 m-auto mt-5">
-    <form>
+    <form action="/login" method="POST">
       @csrf
       <img class="mb-4" src="{{ asset('logo.png') }}" alt="" width="72" height="72">
       <h1 class="h3 mb-3 fw-normal">Silakan Login</h1>
@@ -27,12 +27,12 @@
         </div>
       @endif
       <div class="form-floating">
-        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-        <label for="floatingInput">Email</label>
+        <input type="email" class="form-control" id="email" name="email">
+        <label for="email">Email</label>
       </div>
       <div class="form-floating mb-3">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-        <label for="floatingPassword">Password</label>
+        <input type="password" class="form-control" id="password" name="password">
+        <label for="password">Password</label>
       </div>
       <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
       <small>Belum punya akun? <a href="/register">Register</a></small>
