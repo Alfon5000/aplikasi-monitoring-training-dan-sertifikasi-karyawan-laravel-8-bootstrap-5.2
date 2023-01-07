@@ -30,50 +30,39 @@ use App\Http\Controllers\PendaftaranSertifikasiController;
 |
 */
 
-Route::prefix('admin')->group(function () {
-    Route::get('/', DashboardController::class);
-
-    Route::resource('/data-karyawan', UserController::class);
-
-    Route::resource('/data-training', TrainingController::class);
-
-    Route::resource('/data-sertifikasi', SertifikasiController::class);
-
-    Route::get('/pendaftaran-training', [PendaftaranTrainingController::class, 'index']);
-    Route::put('/pendaftaran-training/accept/{id}', [PendaftaranTrainingController::class, 'accept']);
-    Route::put('/pendaftaran-training/reject/{id}', [PendaftaranTrainingController::class, 'reject']);
-
-    Route::get('/pendaftaran-sertifikasi', [PendaftaranSertifikasiController::class, 'index']);
-    Route::put('/pendaftaran-sertifikasi/accept/{id}', [PendaftaranSertifikasiController::class, 'accept']);
-    Route::put('/pendaftaran-sertifikasi/reject/{id}', [PendaftaranSertifikasiController::class, 'reject']);
-
-    Route::get('/pelaksanaan-training', [PelaksanaanTrainingController::class, 'index']);
-
-    Route::get('/ujian-sertifikasi', [UjianSertifikasiController::class, 'index']);
+Route::middleware('guest')->group(function () {
+    Route::get('/register', [RegisterController::class, 'index']);
+    Route::post('/register', [RegisterController::class, 'store']);
+    Route::get('/login', [LoginController::class, 'index'])->name('login');
+    Route::post('/login', [LoginController::class, 'authenticate']);
 });
 
-Route::get('/', [HomeController::class, 'index']);
+Route::middleware('auth')->group(function () {
+    Route::get('/', [HomeController::class, 'index']);
+    Route::get('/training/{id}', [DetailController::class, 'detailTraining']);
+    Route::get('/sertifikasi/{id}', [DetailController::class, 'detailSertifikasi']);
+    Route::get('/pendaftaran/training', [PendaftaranKaryawanController::class, 'indexTraining']);
+    Route::get('/pendaftaran/sertifikasi', [PendaftaranKaryawanController::class, 'indexSertifikasi']);
+    Route::get('/pelaksanaan/training', [PelaksanaanKaryawanController::class, 'indexTraining']);
+    Route::get('/sertifikat/training', [SertifikatKaryawanController::class, 'indexTraining']);
+    Route::get('/pelaksanaan/sertifikasi', [PelaksanaanKaryawanController::class, 'indexSertifikasi']);
+    Route::get('/sertifikat/sertifikasi', [SertifikatKaryawanController::class, 'indexSertifikasi']);
+    Route::post('/training/{id}', [DetailController::class, 'registerTraining']);
+    Route::post('/sertifikasi/{id}', [DetailController::class, 'registerSertifikasi']);
+    Route::post('/logout', [LogoutController::class, 'logout']);
 
-Route::get('/training/{id}', [DetailController::class, 'detailTraining']);
-Route::get('/sertifikasi/{id}', [DetailController::class, 'detailSertifikasi']);
-Route::post('/training/{id}', [DetailController::class, 'registerTraining']);
-Route::post('/sertifikasi/{id}', [DetailController::class, 'registerSertifikasi']);
-
-Route::get('/pendaftaran/training', [PendaftaranKaryawanController::class, 'indexTraining']);
-Route::get('/pendaftaran/sertifikasi', [PendaftaranKaryawanController::class, 'indexSertifikasi']);
-
-Route::get('/pelaksanaan/training', [PelaksanaanKaryawanController::class, 'indexTraining']);
-Route::get('/pelaksanaan/sertifikasi', [PelaksanaanKaryawanController::class, 'indexSertifikasi']);
-
-Route::get('/sertifikat/training', [SertifikatKaryawanController::class, 'indexTraining']);
-Route::get('/sertifikat/sertifikasi', [SertifikatKaryawanController::class, 'indexSertifikasi']);
-
-Route::get('/login', [LoginController::class, 'index'])->middleware('guest')->name('login');
-Route::post('/login', [LoginController::class, 'authenticate']);
-
-Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
-Route::post('/register', [RegisterController::class, 'store']);
-
-Route::post('/logout', [LogoutController::class, 'logout']);
-
-// Auth::routes();
+    Route::prefix('admin')->group(function () {
+        Route::get('/', DashboardController::class);
+        Route::resource('/data-karyawan', UserController::class);
+        Route::resource('/data-training', TrainingController::class);
+        Route::resource('/data-sertifikasi', SertifikasiController::class);
+        Route::get('/pendaftaran-training', [PendaftaranTrainingController::class, 'index']);
+        Route::get('/pendaftaran-sertifikasi', [PendaftaranSertifikasiController::class, 'index']);
+        Route::get('/pelaksanaan-training', [PelaksanaanTrainingController::class, 'index']);
+        Route::get('/ujian-sertifikasi', [UjianSertifikasiController::class, 'index']);
+        Route::put('/pendaftaran-training/accept/{id}', [PendaftaranTrainingController::class, 'accept']);
+        Route::put('/pendaftaran-training/reject/{id}', [PendaftaranTrainingController::class, 'reject']);
+        Route::put('/pendaftaran-sertifikasi/accept/{id}', [PendaftaranSertifikasiController::class, 'accept']);
+        Route::put('/pendaftaran-sertifikasi/reject/{id}', [PendaftaranSertifikasiController::class, 'reject']);
+    });
+});

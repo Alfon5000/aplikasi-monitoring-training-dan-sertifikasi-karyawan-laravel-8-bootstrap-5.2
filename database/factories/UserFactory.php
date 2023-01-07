@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Support\Arr;
 use Faker\Factory as FakerFactory;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Hash;
 
 class UserFactory extends Factory
 {
@@ -34,7 +34,7 @@ class UserFactory extends Factory
             'jabatan' => Arr::random(User::$jabatans),
             'telepon' => $faker->phoneNumber(),
             'email' => $faker->unique()->safeEmail(),
-            'password' => Crypt::encryptString('password'),
+            'password' => Hash::make('password'),
             'role' => 'Karyawan',
             'foto' => 'foto.jpg'
         ];

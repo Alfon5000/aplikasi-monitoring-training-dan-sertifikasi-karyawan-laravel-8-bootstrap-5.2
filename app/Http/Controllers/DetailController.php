@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Training;
 use App\Models\Sertifikasi;
-use Illuminate\Http\Request;
 use App\Models\PendaftaranTraining;
 use App\Models\PendaftaranSertifikasi;
 
@@ -26,7 +25,7 @@ class DetailController extends Controller
     {
         $training = Training::find($id);
         $pendaftaranTraining = new PendaftaranTraining;
-        $pendaftaranTraining->user_id = 2;
+        $pendaftaranTraining->user_id = auth()->user()->id;
         $pendaftaranTraining->training_id = $training->id;
         $pendaftaranTraining->tanggal = now()->toDate();
         $pendaftaranTraining->status = 'Menunggu Konfirmasi';
@@ -38,7 +37,7 @@ class DetailController extends Controller
     {
         $sertifikasi = Sertifikasi::find($id);
         $pendaftaranSertifikasi = new PendaftaranSertifikasi;
-        $pendaftaranSertifikasi->user_id = 2;
+        $pendaftaranSertifikasi->user_id = auth()->user()->id;
         $pendaftaranSertifikasi->sertifikasi_id = $sertifikasi->id;
         $pendaftaranSertifikasi->tanggal = now()->toDate();
         $pendaftaranSertifikasi->status = 'Menunggu Konfirmasi';

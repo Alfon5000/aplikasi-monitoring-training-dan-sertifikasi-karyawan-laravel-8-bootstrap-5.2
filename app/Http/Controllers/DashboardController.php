@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Training;
 use App\Models\Sertifikasi;
-use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
@@ -15,12 +14,16 @@ class DashboardController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(Request $request)
+    public function __invoke()
     {
+        $total_karyawans = User::where('role', 'Karyawan')->count();
+        $total_trainings = Training::all()->count();
+        $total_sertifikasis = Sertifikasi::all()->count();
+
         return view('admin.index', [
-            'total_karyawan' => User::where('role', 'Karyawan')->count(),
-            'total_training' => Training::all()->count(),
-            'total_sertifikasi' => Sertifikasi::all()->count()
+            'total_karyawans' => $total_karyawans,
+            'total_trainings' => $total_trainings,
+            'total_sertifikasis' => $total_sertifikasis
         ]);
     }
 }

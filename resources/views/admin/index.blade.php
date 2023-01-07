@@ -11,7 +11,7 @@
         <div class="col-lg-4 col-6">
           <div class="small-box bg-info">
             <div class="inner">
-              <h3>{{ $total_karyawan }}</h3>
+              <h3>{{ $total_karyawans }}</h3>
               <p>Karyawan</p>
             </div>
             <div class="icon">
@@ -22,7 +22,7 @@
         <div class="col-lg-4 col-6">
           <div class="small-box bg-success">
             <div class="inner">
-              <h3>{{ $total_training }}</h3>
+              <h3>{{ $total_trainings }}</h3>
               <p>Training</p>
             </div>
             <div class="icon">
@@ -33,7 +33,7 @@
         <div class="col-lg-4 col-6">
           <div class="small-box bg-warning">
             <div class="inner">
-              <h3>{{ $total_sertifikasi }}</h3>
+              <h3>{{ $total_sertifikasis }}</h3>
               <p>Sertifikasi</p>
             </div>
             <div class="icon">

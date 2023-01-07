@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Crypt;
 
 class LoginController extends Controller
 {
@@ -22,12 +21,9 @@ class LoginController extends Controller
             ]
         );
 
-        // $credentials['password'] = Crypt::encryptString($credentials['password']);
-        // return $credentials;
-
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/')->with('login', 'Selamat Datang!');
+            return redirect()->intended('/')->with('login', 'Selamat Datang ' . auth()->user()->nama . '!');
         }
 
         return back()->with('gagal', 'Email atau Password Salah!');

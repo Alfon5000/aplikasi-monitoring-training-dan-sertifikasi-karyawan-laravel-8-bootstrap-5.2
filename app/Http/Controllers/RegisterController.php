@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
@@ -41,7 +41,7 @@ class RegisterController extends Controller
         $user->jabatan = $request->jabatan;
         $user->telepon = $request->telepon;
         $user->email = $request->email;
-        $user->password = Crypt::encryptString($request->password);
+        $user->password = Hash::make($request->password);
         $user->foto = $request->file('foto')->store('foto-user');
         $user->role = 'Karyawan';
         $user->save();

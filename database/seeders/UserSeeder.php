@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
@@ -18,21 +18,21 @@ class UserSeeder extends Seeder
         //insert data admin
         User::insert(
             [
-                'nama' => 'Alfonso Lai',
-                'nik' => '1357924680',
-                'tempat_lahir' => 'Bekasi',
-                'tanggal_lahir' => '1997-04-15',
+                'nama' => 'Admin',
+                'nik' => '1234567890',
+                'tempat_lahir' => 'Rumah Sakit',
+                'tanggal_lahir' => '1945-08-17',
                 'jenis_kelamin' => 'Pria',
-                'agama' => 'Katolik',
-                'alamat' => 'Taman Harapan Baru, Blok S18/6',
-                'kota' => 'Bekasi',
-                'provinsi' => 'Jawa Barat',
+                'agama' => 'Islam',
+                'alamat' => 'Sunter',
+                'kota' => 'Jakarta Utara',
+                'provinsi' => 'DKI Jakarta',
                 'pendidikan' => 'S1',
-                'divisi' => 'Teknologi Informasi',
+                'divisi' => 'Personalia',
                 'jabatan' => 'Manajer',
-                'telepon' => '+6281236665363',
-                'email' => 'alfonso@gmail.com',
-                'password' => Crypt::encryptString('password'),
+                'telepon' => '+6281234567890',
+                'email' => 'admin@gmail.com',
+                'password' => Hash::make('password'),
                 'role' => 'Admin',
                 'foto' => 'foto.jpg',
                 'created_at' => now(),

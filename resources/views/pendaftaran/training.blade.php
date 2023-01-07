@@ -15,7 +15,7 @@
           <tr>
             <th scope="col">No.</th>
             <th scope="col">Nama Training</th>
-            <th scope="col">Status Pelaksanaan</th>
+            <th scope="col">Status Pendaftaran</th>
           </tr>
         </thead>
         <tbody>
