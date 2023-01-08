@@ -17,6 +17,7 @@ use App\Http\Controllers\PelaksanaanTrainingController;
 use App\Http\Controllers\PendaftaranKaryawanController;
 use App\Http\Controllers\PendaftaranTrainingController;
 use App\Http\Controllers\PendaftaranSertifikasiController;
+use App\Http\Controllers\ProfilController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +45,8 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/', [HomeController::class, 'index']);
 
+    Route::get('/profil', [ProfilController::class, 'profilKaryawan']);
+
     Route::controller(DetailController::class)->group(function () {
         Route::get('/training/{id}', 'detailTraining');
         Route::get('/sertifikasi/{id}', 'detailSertifikasi');
@@ -68,6 +71,8 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('admin')->group(function () {
         Route::get('/', DashboardController::class);
+
+        Route::get('/profil', [ProfilController::class, 'profilAdmin']);
 
         Route::resource('/data-karyawan', UserController::class);
 

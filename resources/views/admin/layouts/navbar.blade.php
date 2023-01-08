@@ -15,7 +15,7 @@
         <i class="fas fa-user-cog ml-2"></i>
       </a>
       <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-        <a href="#" class="dropdown-item">
+        <a href="/admin/profil" class="dropdown-item @yield('profil-active')">
           <i class="fas fa-user mr-2"></i>Profil
         </a>
         <div class="dropdown-divider"></div>

@@ -33,7 +33,7 @@ class UserSeeder extends Seeder
                 'email' => 'admin@gmail.com',
                 'password' => Hash::make('password'),
                 'role' => 'Admin',
-                'foto' => 'foto.jpg',
+                'foto' => 'foto-user/admin.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
@@ -54,7 +54,7 @@ class UserSeeder extends Seeder
                 'email' => 'karyawan@gmail.com',
                 'password' => Hash::make('password'),
                 'role' => 'Karyawan',
-                'foto' => 'foto.jpg',
+                'foto' => 'foto-user/man.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]

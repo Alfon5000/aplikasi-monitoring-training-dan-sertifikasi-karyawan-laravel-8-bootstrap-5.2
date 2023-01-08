@@ -51,7 +51,7 @@
             {{-- <i class="bi bi-person-circle"></i> --}}
           </a>
           <ul class="dropdown-menu dropdown-menu-end">
-            <li><a class="dropdown-item" href="/profil">Profil</a></li>
+            <li><a class="dropdown-item @yield('profil-active')" href="/profil">Profil</a></li>
             <li>
               <form action="/logout" method="POST">
                 @csrf
