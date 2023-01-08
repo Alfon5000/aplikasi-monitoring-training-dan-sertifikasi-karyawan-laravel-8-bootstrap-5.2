@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Training;
+use Illuminate\Http\Request;
 use App\Models\PelaksanaanTraining;
 use App\Models\PendaftaranTraining;
-use Illuminate\Http\Request;
 
 class PendaftaranTrainingController extends Controller
 {
@@ -103,8 +104,11 @@ class PendaftaranTrainingController extends Controller
     public function reject($id)
     {
         $pendaftaran_training = PendaftaranTraining::find($id);
+        $training = Training::find($pendaftaran_training->training_id);
         $pendaftaran_training->status = 'Ditolak';
+        $training->kuota = $training->kuota + 1;
         $pendaftaran_training->save();
+        $training->save();
         return redirect('/admin/pendaftaran-training');
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\UjianSertifikasi;
 use App\Models\PendaftaranSertifikasi;
+use App\Models\Sertifikasi;
 
 class PendaftaranSertifikasiController extends Controller
 {
@@ -103,8 +104,11 @@ class PendaftaranSertifikasiController extends Controller
     public function reject($id)
     {
         $pendaftaran_sertifikasi = PendaftaranSertifikasi::find($id);
+        $sertifikasi = Sertifikasi::find($pendaftaran_sertifikasi->sertifikasi_id);
         $pendaftaran_sertifikasi->status = 'Ditolak';
+        $sertifikasi->kuota = $sertifikasi->kuota + 1;
         $pendaftaran_sertifikasi->save();
+        $sertifikasi->save();
         return redirect('/admin/pendaftaran-sertifikasi');
     }
 }

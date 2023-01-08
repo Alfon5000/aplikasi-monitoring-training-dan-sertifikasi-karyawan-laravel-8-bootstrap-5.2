@@ -4,6 +4,11 @@
 
 @section('content')
   <div class="container my-5">
+    {{-- @if ($registered > 0)
+      <div class="alert alert-success" role="alert">
+        Anda telah terdaftar pada sertifikasi ini.
+      </div>
+    @endif --}}
     <div class="card">
       <div class="card-header d-flex justify-content-center">
         <img src="{{ asset('storage/' . $sertifikasi->gambar) }}" class="card-img-top my-3" alt="{{ $sertifikasi->nama }}"
@@ -40,11 +45,17 @@
         </li>
         <li class="list-group-item">
           <h6 class="card-title fw-bold">Kuota</h6>
-          <p class="card-text">{{ $sertifikasi->kuota }}</p>
+          <p class="card-text">
+            @if ($sertifikasi->kuota > 0)
+              {{ $sertifikasi->kuota }}
+            @else
+              Kuota Penuh
+            @endif
+          </p>
         </li>
       </ul>
       <div class="card-footer">
-        @if ($sertifikasi->kuota > 0)
+        @if ($registered <= 0 && $sertifikasi->kuota > 0)
           <form action="/sertifikasi/{{ $sertifikasi->id }}" method="POST" class="d-inline me-2">
             @csrf
             <button type="submit" class="btn btn-primary">Daftar</button>

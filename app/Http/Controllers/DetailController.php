@@ -12,13 +12,21 @@ class DetailController extends Controller
     public function detailTraining($id)
     {
         $training = Training::find($id);
-        return view('detail.training', ['training' => $training]);
+        $registered = PendaftaranTraining::where('training_id', '=', $training->id, 'AND', 'user_id', '=', auth()->user()->id, 'AND', 'status', '!=', 'Ditolak')->count();
+        return view('detail.training', [
+            'training' => $training,
+            'registered' => $registered
+        ]);
     }
 
     public function detailSertifikasi($id)
     {
         $sertifikasi = Sertifikasi::find($id);
-        return view('detail.sertifikasi', ['sertifikasi' => $sertifikasi]);
+        $registered = PendaftaranSertifikasi::where('sertifikasi_id', '=', $sertifikasi->id, 'AND', 'user_id', '=', auth()->user()->id, 'AND', 'status', '!=', 'Ditolak')->count();
+        return view('detail.sertifikasi', [
+            'sertifikasi' => $sertifikasi,
+            'registered' => $registered
+        ]);
     }
 
     public function registerTraining($id)
