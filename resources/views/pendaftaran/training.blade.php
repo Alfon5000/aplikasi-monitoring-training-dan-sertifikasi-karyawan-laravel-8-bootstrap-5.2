@@ -15,6 +15,7 @@
           <tr>
             <th scope="col">No.</th>
             <th scope="col">Nama Training</th>
+            <th scope="col">Tanggal Pendaftaran</th>
             <th scope="col">Status Pendaftaran</th>
           </tr>
         </thead>
@@ -23,7 +24,16 @@
             <tr>
               <td>{{ $loop->iteration }}</td>
               <td>{{ $pendaftaranTraining->training->nama }}</td>
-              <td>{{ $pendaftaranTraining->status }}</td>
+              <td>{{ $pendaftaranTraining->tanggal }}</td>
+              <td>
+                @if ($pendaftaranTraining->status == 'Menunggu Konfirmasi')
+                  <span class="badge text-bg-secondary">{{ $pendaftaranTraining->status }}</span>
+                @elseif ($pendaftaranTraining->status == 'Disetujui')
+                  <span class="badge text-bg-primary">{{ $pendaftaranTraining->status }}</span>
+                @else
+                  <span class="badge text-bg-danger">{{ $pendaftaranTraining->status }}</span>
+                @endif
+              </td>
             </tr>
           @endforeach
         </tbody>

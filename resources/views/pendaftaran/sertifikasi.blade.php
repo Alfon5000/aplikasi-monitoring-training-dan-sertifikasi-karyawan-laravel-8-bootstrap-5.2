@@ -25,7 +25,15 @@
               <td>{{ $loop->iteration }}</td>
               <td>{{ $pendaftaranSertifikasi->sertifikasi->nama }}</td>
               <td>{{ $pendaftaranSertifikasi->tanggal }}</td>
-              <td>{{ $pendaftaranSertifikasi->status }}</td>
+              <td>
+                @if ($pendaftaranSertifikasi->status == 'Menunggu Konfirmasi')
+                  <span class="badge text-bg-secondary">{{ $pendaftaranSertifikasi->status }}</span>
+                @elseif ($pendaftaranSertifikasi->status == 'Disetujui')
+                  <span class="badge text-bg-primary">{{ $pendaftaranSertifikasi->status }}</span>
+                @else
+                  <span class="badge text-bg-danger">{{ $pendaftaranSertifikasi->status }}</span>
+                @endif
+              </td>
             </tr>
           @endforeach
         </tbody>
