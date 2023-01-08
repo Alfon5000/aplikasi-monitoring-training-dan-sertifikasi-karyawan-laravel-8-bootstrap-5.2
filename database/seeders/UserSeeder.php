@@ -15,8 +15,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        //insert data admin
-        User::insert(
+        $users = [
             [
                 'nama' => 'Admin',
                 'nik' => '1234567890',
@@ -24,8 +23,8 @@ class UserSeeder extends Seeder
                 'tanggal_lahir' => '1945-08-17',
                 'jenis_kelamin' => 'Pria',
                 'agama' => 'Islam',
-                'alamat' => 'Sunter',
-                'kota' => 'Jakarta Utara',
+                'alamat' => 'Kebon Jeruk',
+                'kota' => 'Jakarta Barat',
                 'provinsi' => 'DKI Jakarta',
                 'pendidikan' => 'S1',
                 'divisi' => 'Personalia',
@@ -37,9 +36,34 @@ class UserSeeder extends Seeder
                 'foto' => 'foto.jpg',
                 'created_at' => now(),
                 'updated_at' => now(),
+            ],
+            [
+                'nama' => 'Karyawan',
+                'nik' => '1357924680',
+                'tempat_lahir' => 'Rumah Bersalin',
+                'tanggal_lahir' => '2023-01-01',
+                'jenis_kelamin' => 'Pria',
+                'agama' => 'Islam',
+                'alamat' => 'Harapan Indah',
+                'kota' => 'Kota Bekasi',
+                'provinsi' => 'Jawa Barat',
+                'pendidikan' => 'S1',
+                'divisi' => 'Teknologi Informasi',
+                'jabatan' => 'Staff',
+                'telepon' => '+6281234567891',
+                'email' => 'karyawan@gmail.com',
+                'password' => Hash::make('password'),
+                'role' => 'Karyawan',
+                'foto' => 'foto.jpg',
+                'created_at' => now(),
+                'updated_at' => now(),
             ]
-        );
+        ];
 
-        User::factory(10)->create();
+        foreach ($users as $user) {
+            User::insert($user);
+        }
+
+        // User::factory(10)->create();
     }
 }

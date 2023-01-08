@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
@@ -31,38 +30,69 @@ use App\Http\Controllers\PendaftaranSertifikasiController;
 */
 
 Route::middleware('guest')->group(function () {
-    Route::get('/register', [RegisterController::class, 'index']);
-    Route::post('/register', [RegisterController::class, 'store']);
-    Route::get('/login', [LoginController::class, 'index'])->name('login');
-    Route::post('/login', [LoginController::class, 'authenticate']);
+    Route::controller(RegisterController::class)->group(function () {
+        Route::get('/register', 'index');
+        Route::post('/register', 'store');
+    });
+
+    Route::controller(LoginController::class)->group(function () {
+        Route::get('/login', 'index')->name('login');
+        Route::post('/login', 'authenticate');
+    });
 });
 
 Route::middleware('auth')->group(function () {
     Route::get('/', [HomeController::class, 'index']);
-    Route::get('/training/{id}', [DetailController::class, 'detailTraining']);
-    Route::get('/sertifikasi/{id}', [DetailController::class, 'detailSertifikasi']);
-    Route::get('/pendaftaran/training', [PendaftaranKaryawanController::class, 'indexTraining']);
-    Route::get('/pendaftaran/sertifikasi', [PendaftaranKaryawanController::class, 'indexSertifikasi']);
-    Route::get('/pelaksanaan/training', [PelaksanaanKaryawanController::class, 'indexTraining']);
-    Route::get('/sertifikat/training', [SertifikatKaryawanController::class, 'indexTraining']);
-    Route::get('/pelaksanaan/sertifikasi', [PelaksanaanKaryawanController::class, 'indexSertifikasi']);
-    Route::get('/sertifikat/sertifikasi', [SertifikatKaryawanController::class, 'indexSertifikasi']);
-    Route::post('/training/{id}', [DetailController::class, 'registerTraining']);
-    Route::post('/sertifikasi/{id}', [DetailController::class, 'registerSertifikasi']);
-    Route::post('/logout', [LogoutController::class, 'logout']);
+
+    Route::controller(DetailController::class)->group(function () {
+        Route::get('/training/{id}', 'detailTraining');
+        Route::get('/sertifikasi/{id}', 'detailSertifikasi');
+        Route::post('/training/{id}', 'registerTraining');
+        Route::post('/sertifikasi/{id}', 'registerSertifikasi');
+    });
+
+    Route::controller(PendaftaranKaryawanController::class)->group(function () {
+        Route::get('/pendaftaran/training', 'indexTraining');
+        Route::get('/pendaftaran/sertifikasi', 'indexSertifikasi');
+    });
+
+    Route::controller(PelaksanaanKaryawanController::class)->group(function () {
+        Route::get('/pelaksanaan/training', 'indexTraining');
+        Route::get('/pelaksanaan/sertifikasi', 'indexSertifikasi');
+    });
+
+    Route::controller(SertifikatKaryawanController::class)->group(function () {
+        Route::get('/sertifikat/training', 'indexTraining');
+        Route::get('/sertifikat/sertifikasi', 'indexSertifikasi');
+    });
 
     Route::prefix('admin')->group(function () {
         Route::get('/', DashboardController::class);
+
         Route::resource('/data-karyawan', UserController::class);
+
         Route::resource('/data-training', TrainingController::class);
+
         Route::resource('/data-sertifikasi', SertifikasiController::class);
+
         Route::get('/pendaftaran-training', [PendaftaranTrainingController::class, 'index']);
+
         Route::get('/pendaftaran-sertifikasi', [PendaftaranSertifikasiController::class, 'index']);
+
         Route::get('/pelaksanaan-training', [PelaksanaanTrainingController::class, 'index']);
+
         Route::get('/ujian-sertifikasi', [UjianSertifikasiController::class, 'index']);
-        Route::put('/pendaftaran-training/accept/{id}', [PendaftaranTrainingController::class, 'accept']);
-        Route::put('/pendaftaran-training/reject/{id}', [PendaftaranTrainingController::class, 'reject']);
-        Route::put('/pendaftaran-sertifikasi/accept/{id}', [PendaftaranSertifikasiController::class, 'accept']);
-        Route::put('/pendaftaran-sertifikasi/reject/{id}', [PendaftaranSertifikasiController::class, 'reject']);
+
+        Route::controller(PendaftaranTrainingController::class)->group(function () {
+            Route::put('/pendaftaran-training/accept/{id}', 'accept');
+            Route::put('/pendaftaran-training/reject/{id}', 'reject');
+        });
+
+        Route::controller(PendaftaranSertifikasiController::class)->group(function () {
+            Route::put('/pendaftaran-sertifikasi/accept/{id}', 'accept');
+            Route::put('/pendaftaran-sertifikasi/reject/{id}', 'reject');
+        });
     });
+
+    Route::post('/logout', [LogoutController::class, 'logout']);
 });

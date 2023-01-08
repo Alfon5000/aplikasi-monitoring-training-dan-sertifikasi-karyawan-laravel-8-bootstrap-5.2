@@ -19,6 +19,7 @@ class CreateSertifikatTrainingsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->restrictOnDelete()->restrictOnUpdate();
             $table->foreignId('training_id');
             $table->foreign('training_id')->references('id')->on('trainings')->restrictOnDelete()->restrictOnUpdate();
+            $table->string('no_sertifikat');
             $table->date('tanggal_terbit');
             $table->timestamps();
         });
