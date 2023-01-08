@@ -11,9 +11,7 @@ class UjianSertifikasi extends Model
 
     protected $guarded = [];
 
-    public static $status = ['Belum Mulai', 'Sedang Dilaksanakan', 'Sudah Selesai'];
-
-    public static $keterangans = ['Menunggu Hasil', 'Lulus', 'Tidak Lulus'];
+    public static $status = ['Belum Mulai', 'Sedang Dilaksanakan', 'Selesai'];
 
     public function user()
     {

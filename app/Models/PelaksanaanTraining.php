@@ -11,7 +11,7 @@ class PelaksanaanTraining extends Model
 
     protected $guarded = [];
 
-    public static $status = ['Belum Mulai', 'Sedang Dilaksanakan', 'Sudah Selesai'];
+    public static $status = ['Belum Mulai', 'Sedang Dilaksanakan', 'Selesai'];
 
     public function user()
     {

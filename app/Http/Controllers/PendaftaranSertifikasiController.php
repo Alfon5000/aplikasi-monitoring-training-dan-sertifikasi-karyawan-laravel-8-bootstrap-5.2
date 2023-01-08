@@ -96,7 +96,6 @@ class PendaftaranSertifikasiController extends Controller
         $ujian_sertifikasi->user_id = $pendaftaran_sertifikasi->user_id;
         $ujian_sertifikasi->sertifikasi_id = $pendaftaran_sertifikasi->sertifikasi_id;
         $ujian_sertifikasi->status = 'Belum Mulai';
-        $ujian_sertifikasi->keterangan = 'Menunggu Hasil';
         $ujian_sertifikasi->save();
         return redirect('/admin/pendaftaran-sertifikasi');
     }
