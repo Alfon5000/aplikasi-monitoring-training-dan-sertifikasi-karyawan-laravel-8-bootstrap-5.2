@@ -23,7 +23,7 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/')->with('login', 'Selamat Datang ' . auth()->user()->nama . '!');
+            return redirect()->intended('/')->with('login', 'Selamat Datang, ' . auth()->user()->nama . '!');
         }
 
         return back()->with('gagal', 'Email atau Password Salah!');

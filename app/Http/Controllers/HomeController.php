@@ -30,8 +30,12 @@ class HomeController extends Controller
         $sertifikasis = Sertifikasi::latest();
 
         if (request('search')) {
-            $trainings->where('nama', 'like', '%' . request('search') . '%');
-            $sertifikasis->where('nama', 'like', '%' . request('search') . '%');
+            $trainings->where('nama', 'like', '%' . request('search') . '%')
+                ->orWhere('bidang', 'like', '%' . request('search') . '%')
+                ->orWhere('metode', 'like', '%' . request('search') . '%');
+            $sertifikasis->where('nama', 'like', '%' . request('search') . '%')
+                ->orWhere('bidang', 'like', '%' . request('search') . '%')
+                ->orWhere('metode', 'like', '%' . request('search') . '%');
         }
 
         return view('index', [
