@@ -43,7 +43,7 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/', [HomeController::class, 'index']);
+    Route::get('/', HomeController::class);
 
     Route::get('/profil', [ProfilController::class, 'profilKaryawan']);
 
