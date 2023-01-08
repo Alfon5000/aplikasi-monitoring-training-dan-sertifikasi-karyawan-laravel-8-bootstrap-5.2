@@ -29,7 +29,9 @@ class DetailController extends Controller
         $pendaftaranTraining->training_id = $training->id;
         $pendaftaranTraining->tanggal = now()->toDate();
         $pendaftaranTraining->status = 'Menunggu Konfirmasi';
+        $training->kuota = $training->kuota - 1;
         $pendaftaranTraining->save();
+        $training->save();
         return redirect('/')->with('daftar', 'Pendaftaran berhasil. Silakan menunggu persetujuan dari Admin.');
     }
 
@@ -41,7 +43,9 @@ class DetailController extends Controller
         $pendaftaranSertifikasi->sertifikasi_id = $sertifikasi->id;
         $pendaftaranSertifikasi->tanggal = now()->toDate();
         $pendaftaranSertifikasi->status = 'Menunggu Konfirmasi';
+        $sertifikasi->kuota = $sertifikasi->kuota - 1;
         $pendaftaranSertifikasi->save();
+        $sertifikasi->save();
         return redirect('/')->with('daftar', 'Pendaftaran berhasil. Silakan menunggu persetujuan dari Admin.');
     }
 }

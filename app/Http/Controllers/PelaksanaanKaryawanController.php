@@ -10,7 +10,7 @@ class PelaksanaanKaryawanController extends Controller
 {
     public function indexTraining()
     {
-        $pelaksanaanTrainings = PelaksanaanTraining::where('user_id', 2)->latest()->paginate(5);
+        $pelaksanaanTrainings = PelaksanaanTraining::where('user_id', auth()->user()->id)->latest()->paginate(5);
         $count = PelaksanaanTraining::all()->count();
         return view('pelaksanaan.training', [
             'pelaksanaanTrainings' => $pelaksanaanTrainings,
@@ -20,7 +20,7 @@ class PelaksanaanKaryawanController extends Controller
 
     public function indexSertifikasi()
     {
-        $ujianSertifikasis = UjianSertifikasi::where('user_id', 2)->latest()->paginate(5);
+        $ujianSertifikasis = UjianSertifikasi::where('user_id', auth()->user()->id)->latest()->paginate(5);
         $count = UjianSertifikasi::all()->count();
         return view('pelaksanaan.sertifikasi', [
             'ujianSertifikasis' => $ujianSertifikasis,

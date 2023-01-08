@@ -44,11 +44,13 @@
         </li>
       </ul>
       <div class="card-footer">
-        <form action="/sertifikasi/{{ $sertifikasi->id }}" method="POST" class="d-inline">
-          @csrf
-          <button type="submit" class="btn btn-primary">Daftar</button>
-        </form>
-        <a href="/" class="btn btn-danger ms-2">Batal</a>
+        @if ($sertifikasi->kuota > 0)
+          <form action="/sertifikasi/{{ $sertifikasi->id }}" method="POST" class="d-inline me-2">
+            @csrf
+            <button type="submit" class="btn btn-primary">Daftar</button>
+          </form>
+        @endif
+        <a href="/" class="btn btn-danger">Kembali</a>
       </div>
     </div>
   </div>
