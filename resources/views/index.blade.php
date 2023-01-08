@@ -21,7 +21,7 @@
     </div>
     @include('layouts.search')
     <div class="row mb-5">
-      <h2>Daftar Training & Sertfikasi</h2>
+      <h2>Daftar Training & Sertifikasi</h2>
       <div class="row row-cols-1 row-cols-md-4 g-4">
         @foreach ($trainings as $training)
           <div class="col">
