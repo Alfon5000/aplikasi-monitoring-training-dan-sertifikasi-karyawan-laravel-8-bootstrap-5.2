@@ -4,11 +4,11 @@
 
 @section('content')
   <div class="container my-5">
-    {{-- @if ($registered > 0)
+    @if ($registered > 0)
       <div class="alert alert-success" role="alert">
         Anda telah terdaftar pada sertifikasi ini.
       </div>
-    @endif --}}
+    @endif
     <div class="card">
       <div class="card-header d-flex justify-content-center">
         <img src="{{ asset('storage/' . $sertifikasi->gambar) }}" class="card-img-top my-3" alt="{{ $sertifikasi->nama }}"
