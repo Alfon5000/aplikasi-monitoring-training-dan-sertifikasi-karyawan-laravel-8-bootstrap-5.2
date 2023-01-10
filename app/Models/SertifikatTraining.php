@@ -9,6 +9,8 @@ class SertifikatTraining extends Model
 {
     use HasFactory;
 
+    public static $status_validasi = ['Belum Divalidasi', 'Valid', 'Tidak Valid'];
+
     public function user()
     {
         return $this->belongsTo(User::class);

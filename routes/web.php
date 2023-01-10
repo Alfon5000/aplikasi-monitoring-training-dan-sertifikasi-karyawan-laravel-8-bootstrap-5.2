@@ -18,6 +18,8 @@ use App\Http\Controllers\PendaftaranKaryawanController;
 use App\Http\Controllers\PendaftaranTrainingController;
 use App\Http\Controllers\PendaftaranSertifikasiController;
 use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\SertifikatKompetensiController;
+use App\Http\Controllers\SertifikatTrainingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,22 +82,32 @@ Route::middleware('auth')->group(function () {
 
         Route::resource('/data-sertifikasi', SertifikasiController::class);
 
-        Route::get('/pendaftaran-training', [PendaftaranTrainingController::class, 'index']);
-
-        Route::get('/pendaftaran-sertifikasi', [PendaftaranSertifikasiController::class, 'index']);
-
         Route::get('/pelaksanaan-training', [PelaksanaanTrainingController::class, 'index']);
 
         Route::get('/ujian-sertifikasi', [UjianSertifikasiController::class, 'index']);
 
+        Route::controller(PendaftaranSertifikasiController::class)->group(function () {
+            Route::get('/pendaftaran-sertifikasi', 'index');
+            Route::put('/pendaftaran-sertifikasi/accept/{id}', 'accept');
+            Route::put('/pendaftaran-sertifikasi/reject/{id}', 'reject');
+        });
+
         Route::controller(PendaftaranTrainingController::class)->group(function () {
+            Route::get('/pendaftaran-training', 'index');
             Route::put('/pendaftaran-training/accept/{id}', 'accept');
             Route::put('/pendaftaran-training/reject/{id}', 'reject');
         });
 
-        Route::controller(PendaftaranSertifikasiController::class)->group(function () {
-            Route::put('/pendaftaran-sertifikasi/accept/{id}', 'accept');
-            Route::put('/pendaftaran-sertifikasi/reject/{id}', 'reject');
+        Route::controller(SertifikatKompetensiController::class)->group(function () {
+            Route::get('/sertifikat-kompetensi', 'index');
+            Route::put('/sertifikat-kompetensi/accept/{id}', 'accept');
+            Route::put('/sertifikat-kompetensi/reject/{id}', 'reject');
+        });
+
+        Route::controller(SertifikatTrainingController::class)->group(function () {
+            Route::get('/sertifikat-training', 'index');
+            Route::put('/sertifikat-training/accept/{id}', 'accept');
+            Route::put('/sertifikat-training/reject/{id}', 'reject');
         });
     });
 

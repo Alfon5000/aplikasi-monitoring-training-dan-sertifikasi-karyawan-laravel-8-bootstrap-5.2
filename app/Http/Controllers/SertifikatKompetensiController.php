@@ -7,79 +7,27 @@ use Illuminate\Http\Request;
 
 class SertifikatKompetensiController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        return view('admin.sertifikat-kompetensi.index', [
+            'sertifikat_kompetensis' => SertifikatKompetensi::paginate(5),
+            'count' => SertifikatKompetensi::all()->count()
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function accept($id)
     {
-        //
+        $sertifikat_kompetensi = SertifikatKompetensi::find($id);
+        $sertifikat_kompetensi->status_validasi = 'Valid';
+        $sertifikat_kompetensi->save();
+        return redirect('admin/sertifikat-kompetensi');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function reject($id)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\SertifikatKompetensi  $sertifikatKompetensi
-     * @return \Illuminate\Http\Response
-     */
-    public function show(SertifikatKompetensi $sertifikatKompetensi)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\SertifikatKompetensi  $sertifikatKompetensi
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(SertifikatKompetensi $sertifikatKompetensi)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\SertifikatKompetensi  $sertifikatKompetensi
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, SertifikatKompetensi $sertifikatKompetensi)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\SertifikatKompetensi  $sertifikatKompetensi
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(SertifikatKompetensi $sertifikatKompetensi)
-    {
-        //
+        $sertifikat_kompetensi = SertifikatKompetensi::find($id);
+        $sertifikat_kompetensi->status_validasi = 'Tidak Valid';
+        $sertifikat_kompetensi->save();
+        return redirect('admin/sertifikat-kompetensi');
     }
 }

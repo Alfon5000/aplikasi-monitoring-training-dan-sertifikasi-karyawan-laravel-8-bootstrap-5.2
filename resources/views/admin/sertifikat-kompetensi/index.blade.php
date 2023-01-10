@@ -1,8 +1,8 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Pendaftaran Training')
+@section('title', 'Validasi Sertifikat Kompetensi')
 
-@section('pendaftaran-training-active', 'active')
+@section('sertifikat-kompetensi-active', 'active')
 
 @section('content')
   <section class="content">
@@ -41,42 +41,50 @@
                   <thead>
                     <tr>
                       <th>No.</th>
-                      <th>Nama Pendaftar</th>
-                      <th>Nama Training</th>
-                      <th>Tanggal Pendaftaran</th>
-                      <th>Status</th>
+                      <th>Nomor Sertifikat</th>
+                      <th>Nama Karyawan</th>
+                      <th>Nama Sertifikasi</th>
+                      <th>Status Sertifikat</th>
+                      <th>Status Validasi</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach ($pendaftarans as $pendaftaran)
+                    @foreach ($sertifikat_kompetensis as $sertifikat_kompetensi)
                       <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $pendaftaran->user->nama }}</td>
-                        <td>{{ $pendaftaran->training->nama }}</td>
-                        <td>{{ $pendaftaran->tanggal }}</td>
+                        <td>{{ $sertifikat_kompetensi->no_sertifikat }}</td>
+                        <td>{{ $sertifikat_kompetensi->user->nama }}</td>
+                        <td>{{ $sertifikat_kompetensi->sertifikasi->nama }}</td>
                         <td>
-                          @if ($pendaftaran->status == 'Menunggu Konfirmasi')
-                            <span class="badge badge-secondary">{{ $pendaftaran->status }}</span>
-                          @elseif($pendaftaran->status == 'Disetujui')
-                            <span class="badge badge-primary">{{ $pendaftaran->status }}</span>
+                          @if ($sertifikat_kompetensi->status_sertifikat == 'Berlaku')
+                            <span class="badge badge-primary">{{ $sertifikat_kompetensi->status_sertifikat }}</span>
                           @else
-                            <span class="badge badge-danger">{{ $pendaftaran->status }}</span>
+                            <span class="badge badge-secondary">{{ $sertifikat_kompetensi->status_sertifikat }}</span>
                           @endif
                         </td>
                         <td>
-                          @if ($pendaftaran->status == 'Menunggu Konfirmasi')
-                            <form action="/admin/pendaftaran-training/accept/{{ $pendaftaran->id }}" method="POST"
-                              class="d-inline">
+                          @if ($sertifikat_kompetensi->status_validasi == 'Belum Divalidasi')
+                            <span class="badge badge-secondary">{{ $sertifikat_kompetensi->status_validasi }}</span>
+                          @elseif ($sertifikat_kompetensi->status_validasi == 'Valid')
+                            <span class="badge badge-primary">{{ $sertifikat_kompetensi->status_validasi }}</span>
+                          @else
+                            <span class="badge badge-danger">{{ $sertifikat_kompetensi->status_validasi }}</span>
+                          @endif
+                        </td>
+                        <td>
+                          @if ($sertifikat_kompetensi->status_validasi == 'Belum Divalidasi')
+                            <form action="/admin/sertifikat-kompetensi/accept/{{ $sertifikat_kompetensi->id }}"
+                              method="POST" class="d-inline">
                               @method('PUT')
                               @csrf
-                              <button class="btn btn-primary">Setuju</button>
+                              <button class="btn btn-primary">Valid</button>
                             </form>
-                            <form action="/admin/pendaftaran-training/reject/{{ $pendaftaran->id }}" method="POST"
-                              class="d-inline">
+                            <form action="/admin/sertifikat-kompetensi/reject/{{ $sertifikat_kompetensi->id }}"
+                              method="POST" class="d-inline">
                               @method('PUT')
                               @csrf
-                              <button class="btn btn-danger">Tolak</button>
+                              <button class="btn btn-danger">Tidak Valid</button>
                             </form>
                           @else
                             Tidak Ada Aksi
@@ -90,7 +98,7 @@
             </div>
             <div class="card-footer clearfix">
               <ul class="pagination pagination-sm m-0 justify-content-center">
-                {{ $pendaftarans->links() }}
+                {{ $sertifikat_kompetensis->links() }}
               </ul>
             </div>
           </div>

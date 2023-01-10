@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\SertifikatTraining;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -21,6 +22,7 @@ class CreateSertifikatTrainingsTable extends Migration
             $table->foreign('training_id')->references('id')->on('trainings')->restrictOnDelete()->restrictOnUpdate();
             $table->string('no_sertifikat');
             $table->date('tanggal_terbit');
+            $table->enum('status_validasi', SertifikatTraining::$status_validasi);
             $table->timestamps();
         });
     }

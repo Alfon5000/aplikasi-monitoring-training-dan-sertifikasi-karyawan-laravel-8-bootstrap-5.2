@@ -33,7 +33,9 @@
             </div>
             <div class="card-body">
               @if ($count <= 0)
-                <h3 class="text-center">@yield('title') Belum Ada!</h3>
+                <div class="alert alert-danger" role="alert">
+                  <h5 class="text-center">Belum Ada @yield('title')!</h5>
+                </div>
               @else
                 <table class="table table-bordered text-center">
                   <thead>

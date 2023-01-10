@@ -9,7 +9,9 @@ class SertifikatKompetensi extends Model
 {
     use HasFactory;
 
-    public static $status = ['Berlaku', 'Kadaluarsu'];
+    public static $status_sertifikat = ['Berlaku', 'Kadaluarsu'];
+
+    public static $status_validasi = ['Belum Divalidasi', 'Valid', 'Tidak Valid'];
 
     public function user()
     {
