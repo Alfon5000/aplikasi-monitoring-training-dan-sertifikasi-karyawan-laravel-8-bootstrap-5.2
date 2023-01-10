@@ -28,13 +28,7 @@
               <td>{{ $pelaksanaanTraining->training->tanggal_mulai }}</td>
               <td>{{ $pelaksanaanTraining->training->tanggal_selesai }}</td>
               <td>
-                @if ($pelaksanaanTraining->status == 'Belum Mulai')
-                  <span class="badge text-bg-danger">{{ $pelaksanaanTraining->status }}</span>
-                @elseif ($pelaksanaanTraining->status == 'Sedang Dilaksanakan')
-                  <span class="badge text-bg-warning">{{ $pelaksanaanTraining->status }}</span>
-                @else
-                  <span class="badge text-bg-success">{{ $pelaksanaanTraining->status }}</span>
-                @endif
+                <span class="badge text-bg-{{ $color }}">{{ $status }}</span>
               </td>
             </tr>
           @endforeach

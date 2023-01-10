@@ -11,8 +11,6 @@ class UjianSertifikasi extends Model
 
     protected $guarded = [];
 
-    public static $status = ['Belum Mulai', 'Sedang Dilaksanakan', 'Selesai'];
-
     public function user()
     {
         return $this->belongsTo(User::class);

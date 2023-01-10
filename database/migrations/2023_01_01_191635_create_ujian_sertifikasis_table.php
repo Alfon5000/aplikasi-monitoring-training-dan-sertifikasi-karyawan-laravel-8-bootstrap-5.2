@@ -20,7 +20,6 @@ class CreateUjianSertifikasisTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->restrictOnDelete()->restrictOnUpdate();
             $table->foreignId('sertifikasi_id');
             $table->foreign('sertifikasi_id')->references('id')->on('sertifikasis')->restrictOnDelete()->restrictOnUpdate();
-            $table->enum('status', UjianSertifikasi::$status);
             $table->timestamps();
         });
     }

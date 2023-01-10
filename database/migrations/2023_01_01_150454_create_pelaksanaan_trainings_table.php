@@ -20,7 +20,6 @@ class CreatePelaksanaanTrainingsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->restrictOnDelete()->restrictOnUpdate();
             $table->foreignId('training_id');
             $table->foreign('training_id')->references('id')->on('trainings')->restrictOnDelete()->restrictOnUpdate();
-            $table->enum('status', PelaksanaanTraining::$status);
             $table->timestamps();
         });
     }

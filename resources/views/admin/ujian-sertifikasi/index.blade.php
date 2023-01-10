@@ -41,37 +41,21 @@
                   <thead>
                     <tr>
                       <th>No.</th>
-                      <th>NIK</th>
                       <th>Nama Karyawan</th>
                       <th>Nama Sertifikasi</th>
+                      <th>Tanggal Ujian</th>
                       <th>Status Pelaksanaan</th>
-                      <th>Keterangan</th>
                     </tr>
                   </thead>
                   <tbody>
                     @foreach ($ujian_sertifikasis as $ujian_sertifikasi)
                       <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $ujian_sertifikasi->user->nik }}</td>
                         <td>{{ $ujian_sertifikasi->user->nama }}</td>
                         <td>{{ $ujian_sertifikasi->sertifikasi->nama }}</td>
+                        <td>{{ $ujian_sertifikasi->sertifikasi->tanggal_ujian }}</td>
                         <td>
-                          @if ($ujian_sertifikasi->status == 'Belum Mulai')
-                            <span class="badge badge-danger">{{ $ujian_sertifikasi->status }}</span>
-                          @elseif($ujian_sertifikasi->status == 'Sedang Dilaksanakan')
-                            <span class="badge badge-warning">{{ $ujian_sertifikasi->status }}</span>
-                          @else
-                            <span class="badge badge-success">{{ $ujian_sertifikasi->status }}</span>
-                          @endif
-                        </td>
-                        <td>
-                          @if ($ujian_sertifikasi->keterangan == 'Menunggu Hasil')
-                            <span class="badge badge-secondary">{{ $ujian_sertifikasi->keterangan }}</span>
-                          @elseif($ujian_sertifikasi->keterangan == 'Lulus')
-                            <span class="badge badge-success">{{ $ujian_sertifikasi->keterangan }}</span>
-                          @else
-                            <span class="badge badge-danger">{{ $ujian_sertifikasi->keterangan }}</span>
-                          @endif
+                          <span class="badge badge-{{ $color }}">{{ $status }}</span>
                         </td>
                       </tr>
                     @endforeach

@@ -26,13 +26,7 @@
               <td>{{ $ujianSertifikasi->sertifikasi->nama }}</td>
               <td>{{ $ujianSertifikasi->sertifikasi->tanggal_ujian }}</td>
               <td>
-                @if ($ujianSertifikasi->status == 'Belum Mulai')
-                  <span class="badge text-bg-danger">{{ $ujianSertifikasi->status }}</span>
-                @elseif ($ujianSertifikasi->status == 'Sedang Dilaksanakan')
-                  <span class="badge text-bg-warning">{{ $ujianSertifikasi->status }}</span>
-                @else
-                  <span class="badge text-bg-success">{{ $ujianSertifikasi->status }}</span>
-                @endif
+                <span class="badge text-bg-{{ $color }}">{{ $status }}</span>
               </td>
             </tr>
           @endforeach

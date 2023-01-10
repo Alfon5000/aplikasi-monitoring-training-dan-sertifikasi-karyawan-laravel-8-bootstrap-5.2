@@ -41,9 +41,10 @@
                   <thead>
                     <tr>
                       <th>No.</th>
-                      <th>NIK</th>
                       <th>Nama Karyawan</th>
                       <th>Nama Training</th>
+                      <th>Tanggal Mulai</th>
+                      <th>Tanggal Selesai</th>
                       <th>Status Pelaksanaan</th>
                     </tr>
                   </thead>
@@ -51,17 +52,12 @@
                     @foreach ($pelaksanaan_trainings as $pelaksanaan_training)
                       <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $pelaksanaan_training->user->nik }}</td>
                         <td>{{ $pelaksanaan_training->user->nama }}</td>
                         <td>{{ $pelaksanaan_training->training->nama }}</td>
+                        <td>{{ $pelaksanaan_training->training->tanggal_mulai }}</td>
+                        <td>{{ $pelaksanaan_training->training->tanggal_selesai }}</td>
                         <td>
-                          @if ($pelaksanaan_training->status == 'Belum Mulai')
-                            <span class="badge badge-danger">{{ $pelaksanaan_training->status }}</span>
-                          @elseif($pelaksanaan_training->status == 'Sedang Dilaksanakan')
-                            <span class="badge badge-warning">{{ $pelaksanaan_training->status }}</span>
-                          @else
-                            <span class="badge badge-success">{{ $pelaksanaan_training->status }}</span>
-                          @endif
+                          <span class="badge badge-{{ $color }}">{{ $status }}</span>
                         </td>
                       </tr>
                     @endforeach

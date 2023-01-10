@@ -18,8 +18,9 @@
             Pendaftaran
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item @yield('pendaftaran-training')" href="/pendaftaran/training">Training</a></li>
-            <li><a class="dropdown-item @yield('pendaftaran-sertifikasi')" href="/pendaftaran/sertifikasi">Sertifikasi</a></li>
+            <li><a class="dropdown-item @yield('pendaftaran-sertifikasi')" href="/pendaftaran/sertifikasi">Pendaftaran Sertifikasi</a>
+            </li>
+            <li><a class="dropdown-item @yield('pendaftaran-training')" href="/pendaftaran/training">Pendaftaran Training</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
@@ -28,8 +29,8 @@
             Pelaksanaan
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item @yield('pelaksanaan-training')" href="/pelaksanaan/training">Training</a></li>
-            <li><a class="dropdown-item @yield('pelaksanaan-sertifikasi')" href="/pelaksanaan/sertifikasi">Sertifikasi</a></li>
+            <li><a class="dropdown-item @yield('pelaksanaan-sertifikasi')" href="/pelaksanaan/sertifikasi">Ujian Sertifikasi</a></li>
+            <li><a class="dropdown-item @yield('pelaksanaan-training')" href="/pelaksanaan/training">Pelaksanaan Training</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
@@ -38,8 +39,8 @@
             Sertifikat
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item @yield('sertifikat-training')" href="/sertifikat/training">Training</a></li>
-            <li><a class="dropdown-item @yield('sertifikat-sertifikasi')" href="/sertifikat/sertifikasi">Sertifikasi</a></li>
+            <li><a class="dropdown-item @yield('sertifikat-sertifikasi')" href="/sertifikat/sertifikasi">Sertifikat Kompetensi</a></li>
+            <li><a class="dropdown-item @yield('sertifikat-training')" href="/sertifikat/training">Sertifikat Training</a></li>
           </ul>
         </li>
       </ul>

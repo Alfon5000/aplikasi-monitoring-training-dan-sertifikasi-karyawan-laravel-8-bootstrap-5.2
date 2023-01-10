@@ -15,9 +15,29 @@ class PelaksanaanTrainingController extends Controller
      */
     public function __invoke(Request $request)
     {
+        $pelaksanaan_trainings = PelaksanaanTraining::latest()->paginate(5);
+        $count = PelaksanaanTraining::all()->count();
+        $status = '';
+        $color = '';
+
+        foreach ($pelaksanaan_trainings as $pelaksanaan_training) {
+            if ($pelaksanaan_training->training->tanggal_mulai > date('Y-m-d')) {
+                $status = 'Belum Mulai';
+                $color = 'danger';
+            } elseif ($pelaksanaan_training->training->tanggal_selesai < date('Y-m-d')) {
+                $status = 'Selesai';
+                $color = 'success';
+            } else {
+                $status = 'Sedang Dilaksanakan';
+                $color = 'warning';
+            }
+        }
+
         return view('admin.pelaksanaan-training.index', [
-            'pelaksanaan_trainings' => PelaksanaanTraining::latest()->paginate(5),
-            'count' => PelaksanaanTraining::all()->count()
+            'pelaksanaan_trainings' => $pelaksanaan_trainings,
+            'count' => $count,
+            'status' => $status,
+            'color' => $color
         ]);
     }
 }
