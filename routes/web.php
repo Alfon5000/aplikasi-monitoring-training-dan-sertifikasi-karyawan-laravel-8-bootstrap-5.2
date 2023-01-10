@@ -82,9 +82,9 @@ Route::middleware('auth')->group(function () {
 
         Route::resource('/data-sertifikasi', SertifikasiController::class);
 
-        Route::get('/pelaksanaan-training', [PelaksanaanTrainingController::class, 'index']);
+        Route::get('/pelaksanaan-training', PelaksanaanTrainingController::class);
 
-        Route::get('/ujian-sertifikasi', [UjianSertifikasiController::class, 'index']);
+        Route::get('/ujian-sertifikasi', UjianSertifikasiController::class);
 
         Route::controller(PendaftaranSertifikasiController::class)->group(function () {
             Route::get('/pendaftaran-sertifikasi', 'index');

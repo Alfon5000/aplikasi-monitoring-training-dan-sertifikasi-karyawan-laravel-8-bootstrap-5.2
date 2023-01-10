@@ -9,83 +9,12 @@ use App\Models\Sertifikasi;
 
 class PendaftaranSertifikasiController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         return view('admin.pendaftaran-sertifikasi.index', [
             'pendaftarans' => PendaftaranSertifikasi::paginate(5),
             'count' => PendaftaranSertifikasi::all()->count()
         ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\PendaftaranSertifikasi  $pendaftaranSertifikasi
-     * @return \Illuminate\Http\Response
-     */
-    public function show(PendaftaranSertifikasi $pendaftaranSertifikasi)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\PendaftaranSertifikasi  $pendaftaranSertifikasi
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(PendaftaranSertifikasi $pendaftaranSertifikasi)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\PendaftaranSertifikasi  $pendaftaranSertifikasi
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, PendaftaranSertifikasi $pendaftaranSertifikasi)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\PendaftaranSertifikasi  $pendaftaranSertifikasi
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(PendaftaranSertifikasi $pendaftaranSertifikasi)
-    {
-        //
     }
 
     public function accept($id)
