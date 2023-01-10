@@ -9,6 +9,7 @@
 @section('content')
   <div class="container my-5">
     <h2>@yield('title')</h2>
+    <a href="/sertifikat/sertifikasi/create" class="btn btn-primary mb-3">Tambah</a>
     @if ($count > 0)
       <table class="table table-bordered table-striped text-center">
         <thead class="bg-primary text-light">

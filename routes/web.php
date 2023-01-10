@@ -57,18 +57,22 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::controller(PendaftaranKaryawanController::class)->group(function () {
-        Route::get('/pendaftaran/training', 'indexTraining');
         Route::get('/pendaftaran/sertifikasi', 'indexSertifikasi');
+        Route::get('/pendaftaran/training', 'indexTraining');
     });
 
     Route::controller(PelaksanaanKaryawanController::class)->group(function () {
-        Route::get('/pelaksanaan/training', 'indexTraining');
         Route::get('/pelaksanaan/sertifikasi', 'indexSertifikasi');
+        Route::get('/pelaksanaan/training', 'indexTraining');
     });
 
     Route::controller(SertifikatKaryawanController::class)->group(function () {
-        Route::get('/sertifikat/training', 'indexTraining');
         Route::get('/sertifikat/sertifikasi', 'indexSertifikasi');
+        Route::get('/sertifikat/sertifikasi/create', 'createSertifikasi');
+        Route::post('/sertifikat/sertifikasi', 'storeSertifikasi');
+        Route::get('/sertifikat/training', 'indexTraining');
+        Route::get('/sertifikat/training/create', 'createTraining');
+        Route::post('/sertifikat/training', 'storeTraining');
     });
 
     Route::prefix('admin')->group(function () {
