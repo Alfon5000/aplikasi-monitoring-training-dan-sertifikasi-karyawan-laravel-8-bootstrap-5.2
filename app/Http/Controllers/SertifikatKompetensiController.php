@@ -9,9 +9,26 @@ class SertifikatKompetensiController extends Controller
 {
     public function index()
     {
+        $sertifikat_kompetensis = SertifikatKompetensi::paginate(5);
+        $count = SertifikatKompetensi::all()->count();
+        $status = '';
+        $color = '';
+
+        foreach ($sertifikat_kompetensis as $sertifikat_kompetensi) {
+            if ($sertifikat_kompetensi->tanggal_kadaluarsa >= date('Y-m-d')) {
+                $status = 'Berlaku';
+                $color = 'primary';
+            } else {
+                $status = 'Kadaluarsa';
+                $color = 'secondary';
+            }
+        }
+
         return view('admin.sertifikat-kompetensi.index', [
-            'sertifikat_kompetensis' => SertifikatKompetensi::paginate(5),
-            'count' => SertifikatKompetensi::all()->count()
+            'sertifikat_kompetensis' => $sertifikat_kompetensis,
+            'count' => $count,
+            'status' => $status,
+            'color' => $color
         ]);
     }
 

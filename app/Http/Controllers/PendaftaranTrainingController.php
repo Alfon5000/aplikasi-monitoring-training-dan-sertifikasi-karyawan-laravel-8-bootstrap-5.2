@@ -25,7 +25,6 @@ class PendaftaranTrainingController extends Controller
         $pelaksanaan_training = new PelaksanaanTraining;
         $pelaksanaan_training->user_id = $pendaftaran_training->user_id;
         $pelaksanaan_training->training_id = $pendaftaran_training->training_id;
-        $pelaksanaan_training->status = 'Belum Mulai';
         $pelaksanaan_training->save();
         return redirect('/admin/pendaftaran-training');
     }

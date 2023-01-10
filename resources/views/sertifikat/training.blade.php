@@ -17,15 +17,25 @@
             <th scope="col">Nomor Sertifikat</th>
             <th scope="col">Nama Training</th>
             <th scope="col">Tanggal Terbit</th>
+            <th scope="col">Status Validasi</th>
           </tr>
         </thead>
         <tbody>
           @foreach ($sertifikatTrainings as $sertifikatTraining)
             <tr>
               <td>{{ $loop->iteration }}</td>
-              <td>{{ $sertifikatTraining->training->no_sertifikat }}</td>
+              <td>{{ $sertifikatTraining->no_sertifikat }}</td>
               <td>{{ $sertifikatTraining->training->nama }}</td>
               <td>{{ $sertifikatTraining->tanggal_terbit }}</td>
+              <td>
+                @if ($sertifikatTraining->status_validasi == 'Belum Divalidasi')
+                  <span class="badge text-bg-secondary">{{ $sertifikatTraining->status_validasi }}</span>
+                @elseif($sertifikatTraining->status_validasi == 'Valid')
+                  <span class="badge text-bg-primary">{{ $sertifikatTraining->status_validasi }}</span>
+                @else
+                  <span class="badge text-bg-danger">{{ $sertifikatTraining->status_validasi }}</span>
+                @endif
+              </td>
             </tr>
           @endforeach
         </tbody>

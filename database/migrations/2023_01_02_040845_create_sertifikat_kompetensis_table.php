@@ -23,7 +23,6 @@ class CreateSertifikatKompetensisTable extends Migration
             $table->string('no_sertifikat');
             $table->date('tanggal_terbit');
             $table->date('tanggal_kadaluarsa');
-            $table->enum('status_sertifikat', SertifikatKompetensi::$status_sertifikat);
             $table->enum('status_validasi', SertifikatKompetensi::$status_validasi);
             $table->timestamps();
         });

@@ -57,11 +57,7 @@
                         <td>{{ $sertifikat_kompetensi->user->nama }}</td>
                         <td>{{ $sertifikat_kompetensi->sertifikasi->nama }}</td>
                         <td>
-                          @if ($sertifikat_kompetensi->status_sertifikat == 'Berlaku')
-                            <span class="badge badge-primary">{{ $sertifikat_kompetensi->status_sertifikat }}</span>
-                          @else
-                            <span class="badge badge-secondary">{{ $sertifikat_kompetensi->status_sertifikat }}</span>
-                          @endif
+                          <span class="badge badge-{{ $color }}">{{ $status }}</span>
                         </td>
                         <td>
                           @if ($sertifikat_kompetensi->status_validasi == 'Belum Divalidasi')

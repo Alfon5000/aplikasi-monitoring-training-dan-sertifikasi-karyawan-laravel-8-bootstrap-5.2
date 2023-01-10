@@ -14,26 +14,32 @@
         <thead class="bg-primary text-light">
           <tr>
             <th scope="col">No.</th>
-            <th scope="col">Nomor Sertifikasi</th>
+            <th scope="col">Nomor Sertifikat</th>
             <th scope="col">Nama Sertifikasi</th>
-            <th scope="col">Tanggal Sertifikat</th>
+            <th scope="col">Tanggal Terbit</th>
             <th scope="col">Tanggal Kadaluarsa</th>
-            <th scope="col">Status</th>
+            <th scope="col">Status Sertifikat</th>
+            <th scope="col">Status Validasi</th>
           </tr>
         </thead>
         <tbody>
           @foreach ($sertifikatKompetensis as $sertifikatKompetensi)
             <tr>
               <td>{{ $loop->iteration }}</td>
-              <td>{{ $sertifikatKompetensi->sertifikasi->no_sertifikat }}</td>
+              <td>{{ $sertifikatKompetensi->no_sertifikat }}</td>
               <td>{{ $sertifikatKompetensi->sertifikasi->nama }}</td>
               <td>{{ $sertifikatKompetensi->tanggal_terbit }}</td>
               <td>{{ $sertifikatKompetensi->tanggal_kadaluarsa }}</td>
               <td>
-                @if ($sertifikatKompetensi->status == 'Berlaku')
-                  <span class="badge text-bg-primary">{{ $sertifikatKompetensi->status }}</span>
+                <span class="badge text-bg-{{ $color }}">{{ $status }}</span>
+              </td>
+              <td>
+                @if ($sertifikatKompetensi->status_validasi == 'Belum Divalidasi')
+                  <span class="badge text-bg-secondary">{{ $sertifikatKompetensi->status_validasi }}</span>
+                @elseif($sertifikatKompetensi->status_validasi == 'Valid')
+                  <span class="badge text-bg-primary">{{ $sertifikatKompetensi->status_validasi }}</span>
                 @else
-                  <span class="badge text-bg-primary">{{ $sertifikatKompetensi->status }}</span>
+                  <span class="badge text-bg-danger">{{ $sertifikatKompetensi->status_validasi }}</span>
                 @endif
               </td>
             </tr>
