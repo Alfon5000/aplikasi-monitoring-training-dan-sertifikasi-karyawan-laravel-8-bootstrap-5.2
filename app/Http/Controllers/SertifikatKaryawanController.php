@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PelaksanaanTraining;
-use App\Models\Sertifikasi;
-use App\Models\SertifikatKompetensi;
 use Illuminate\Http\Request;
-use App\Models\SertifikatTraining;
 use App\Models\UjianSertifikasi;
+use App\Models\SertifikatTraining;
+use App\Models\PelaksanaanTraining;
+use App\Models\SertifikatKompetensi;
 
 class SertifikatKaryawanController extends Controller
 {
     public function indexSertifikasi()
     {
-        $sertifikatKompetensis = SertifikatKompetensi::where('user_id', auth()->user()->id)->latest()->paginate(5);
+        $sertifikatKompetensis = SertifikatKompetensi::where('user_id', '=', auth()->user()->id)->latest()->paginate(5);
         $count = SertifikatKompetensi::all()->count();
         $status = '';
         $color = '';
@@ -38,7 +37,7 @@ class SertifikatKaryawanController extends Controller
 
     public function indexTraining()
     {
-        $sertifikatTrainings = SertifikatTraining::where('user_id', auth()->user()->id)->latest()->paginate(5);
+        $sertifikatTrainings = SertifikatTraining::where('user_id', '=', auth()->user()->id)->latest()->paginate(5);
         $count = SertifikatTraining::all()->count();
 
         return view('sertifikat.index-training', [
@@ -49,7 +48,7 @@ class SertifikatKaryawanController extends Controller
 
     public function createSertifikasi()
     {
-        $ujianSertifikasis = UjianSertifikasi::where('user_id', '=', auth()->user()->id)->get();
+        $ujianSertifikasis = UjianSertifikasi::whereRelation('sertifikasi', 'tanggal_ujian', '<', date('Y-m-d'))->where('user_id', '=', auth()->user()->id)->get();
 
         return view('sertifikat.create-sertifikasi', [
             'ujianSertifikasis' => $ujianSertifikasis
@@ -58,7 +57,7 @@ class SertifikatKaryawanController extends Controller
 
     public function createTraining()
     {
-        $pelaksanaanTrainings = PelaksanaanTraining::where('user_id', '=', auth()->user()->id)->get();
+        $pelaksanaanTrainings = PelaksanaanTraining::whereRelation('training', 'tanggal_selesai', '<', date('Y-m-d'))->where('user_id', '=', auth()->user()->id)->get();
 
         return view('sertifikat.create-training', [
             'pelaksanaanTrainings' => $pelaksanaanTrainings
